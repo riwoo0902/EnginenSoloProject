@@ -1,3 +1,4 @@
+using System;
 using _1.Script.Lrw.MonoSingelton;
 using _10.InputSystem;
 using Unity.Mathematics;
@@ -9,26 +10,22 @@ namespace _1.Script.UserScript.DragManagerScript
     {
         [SerializeField] private InputSo input;
         
-        private DragImage _dragImage;
-        
+        private bool _isDragging = false;
+        public Action<DragData> Drag;
         protected override void Awake()
         {
             base.Awake();
             
-            _dragImage = GetComponentInChildren<DragImage>();
-            
             input.leftClickOn += DragStart;
             input.leftClickOff += DragEnd;
-            
-            
-            
         }
 
         private Vector2 _clickStartPoint;
         
         private void DragStart()
         {
-            _dragImage.gameObject.SetActive(true);
+            Drag?.Invoke(new DragData(Vector2.zero,Vector2.zero));
+            _isDragging = true;
            _clickStartPoint = input.MousePosUI;
         }
 
@@ -37,20 +34,19 @@ namespace _1.Script.UserScript.DragManagerScript
             Vector2 a = input.MousePosUI - _clickStartPoint;
             Vector2 b = _clickStartPoint + a * 0.5f;
             Vector2 c = math.abs(a);
-            _dragImage.SetRectTransform(b,c);
-            
+            Drag?.Invoke(new DragData(b,c));
             
         }
 
         private void DragEnd()
         {
-            _dragImage.gameObject.SetActive(false);
-            
+            Drag?.Invoke(new DragData(Vector2.zero,Vector2.zero));
+            _isDragging  = false;
         }
 
         private void Update()
         {
-            if (input.IsLeftClick)
+            if (_isDragging)
             {
                 Draging();
             }
@@ -59,10 +55,9 @@ namespace _1.Script.UserScript.DragManagerScript
 
         protected override void OnDestroy()
         {
-            base.OnDestroy();
             input.leftClickOn -= DragStart;
             input.leftClickOff -= DragEnd;
-            
+            base.OnDestroy();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace _1.Script.UserScript.DragManagerScript
@@ -12,13 +13,20 @@ namespace _1.Script.UserScript.DragManagerScript
             _transform = GetComponent<RectTransform>();
         }
 
-        public void SetRectTransform(Vector2 position, Vector2 size)
+        private void Start()
         {
-            _transform.position = position;
-            _transform.sizeDelta = size;
+            DragManager.Instance.Drag += SetRectTransform;
         }
-        
-        
-        
+
+        private void SetRectTransform(DragData data)
+        {
+            _transform.position = data.pos;
+            _transform.sizeDelta = data.size;
+        }
+
+        private void OnDestroy()
+        {
+            DragManager.Instance.Drag += SetRectTransform;
+        }
     }
 }
