@@ -1,21 +1,29 @@
 using System;
-using _1.Script.Lrw.MonoSingelton;
 using _10.InputSystem;
 using Unity.Mathematics;
 using UnityEngine;
 
 namespace _1.Script.UserScript.DragManagerScript
 {
-    public class DragManager : MonoSingleton<DragManager>
+    public class DragManager : MonoBehaviour
     {
         [SerializeField] private InputSo input;
         
         private bool _isDragging = false;
-        public Action<DragData> Drag;
-        protected override void Awake()
+        public Action<DragData> drag;
+        
+        public static DragManager Instance;
+        protected void Awake()
         {
-            base.Awake();
-            
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
             input.leftClickOn += DragStart;
             input.leftClickOff += DragEnd;
         }
@@ -24,7 +32,7 @@ namespace _1.Script.UserScript.DragManagerScript
         
         private void DragStart()
         {
-            Drag?.Invoke(new DragData(Vector2.zero,Vector2.zero));
+            drag?.Invoke(new DragData(Vector2.zero,Vector2.zero));
             _isDragging = true;
            _clickStartPoint = input.MousePosUI;
         }
@@ -34,13 +42,13 @@ namespace _1.Script.UserScript.DragManagerScript
             Vector2 a = input.MousePosUI - _clickStartPoint;
             Vector2 b = _clickStartPoint + a * 0.5f;
             Vector2 c = math.abs(a);
-            Drag?.Invoke(new DragData(b,c));
+            drag?.Invoke(new DragData(b,c));
             
         }
 
         private void DragEnd()
         {
-            Drag?.Invoke(new DragData(Vector2.zero,Vector2.zero));
+            drag?.Invoke(new DragData(Vector2.zero,Vector2.zero));
             _isDragging  = false;
         }
 
@@ -53,11 +61,11 @@ namespace _1.Script.UserScript.DragManagerScript
             
         }
 
-        protected override void OnDestroy()
+        private void OnDisable()
         {
             input.leftClickOn -= DragStart;
             input.leftClickOff -= DragEnd;
-            base.OnDestroy();
         }
+        
     }
 }

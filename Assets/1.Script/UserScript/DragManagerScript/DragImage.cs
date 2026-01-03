@@ -7,15 +7,16 @@ namespace _1.Script.UserScript.DragManagerScript
     public class DragImage : MonoBehaviour
     {
         private RectTransform _transform;
-
+        private DragManager _dragManager;
         private void Awake()
         {
             _transform = GetComponent<RectTransform>();
+            _dragManager = transform.root.GetComponent<DragManager>();
         }
 
         private void Start()
         {
-            DragManager.Instance.Drag += SetRectTransform;
+            _dragManager.drag += SetRectTransform;
         }
 
         private void SetRectTransform(DragData data)
@@ -26,7 +27,8 @@ namespace _1.Script.UserScript.DragManagerScript
 
         private void OnDestroy()
         {
-            DragManager.Instance.Drag += SetRectTransform;
+            _dragManager.drag -= SetRectTransform;
         }
+        
     }
 }
