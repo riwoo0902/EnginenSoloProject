@@ -1,4 +1,5 @@
-using System;
+using _1.Script.EventBusScript;
+using _1.Script.EventBusScript.Events;
 using _10.InputSystem;
 using Unity.Mathematics;
 using UnityEngine;
@@ -10,7 +11,6 @@ namespace _1.Script.UserScript.DragManagerScript
         [SerializeField] private InputSo input;
         
         private bool _isDragging = false;
-        public Action<DragData> drag;
         
         public static DragManager Instance;
         protected void Awake()
@@ -28,11 +28,16 @@ namespace _1.Script.UserScript.DragManagerScript
             input.leftClickOff += DragEnd;
         }
 
+        private void Start()
+        {
+            EventBus<Drag>.Raise(new Drag(Vector2.zero, Vector2.zero));
+        }
+
         private Vector2 _clickStartPoint;
         
         private void DragStart()
         {
-            drag?.Invoke(new DragData(Vector2.zero,Vector2.zero));
+            EventBus<Drag>.Raise(new Drag(Vector2.zero, Vector2.zero));
             _isDragging = true;
            _clickStartPoint = input.MousePosUI;
         }
@@ -42,13 +47,12 @@ namespace _1.Script.UserScript.DragManagerScript
             Vector2 a = input.MousePosUI - _clickStartPoint;
             Vector2 b = _clickStartPoint + a * 0.5f;
             Vector2 c = math.abs(a);
-            drag?.Invoke(new DragData(b,c));
-            
+            EventBus<Drag>.Raise(new Drag(b,c));
         }
 
         private void DragEnd()
         {
-            drag?.Invoke(new DragData(Vector2.zero,Vector2.zero));
+            EventBus<Drag>.Raise(new Drag(Vector2.zero, Vector2.zero));
             _isDragging  = false;
         }
 

@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace _1.Script.UserScript.DragManagerScript
+namespace _1.Script.EventBusScript.Events
 {
-    public class DragData
+    public class Drag : IEvent
     {
-        public DragData(Vector2 position, Vector2 size)
+        public Drag(Vector2 position, Vector2 size)
         {
             pos =  position;
             this.size = size;
