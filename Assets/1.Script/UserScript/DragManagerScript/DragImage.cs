@@ -1,4 +1,6 @@
 using System;
+using _1.Script.EventBusScript;
+using _1.Script.EventBusScript.Events;
 using UnityEngine;
 
 namespace _1.Script.UserScript.DragManagerScript
@@ -7,19 +9,13 @@ namespace _1.Script.UserScript.DragManagerScript
     public class DragImage : MonoBehaviour
     {
         private RectTransform _transform;
-        private DragManager _dragManager;
         private void Awake()
         {
             _transform = GetComponent<RectTransform>();
-            _dragManager = transform.root.GetComponent<DragManager>();
+            EventBus<Drag>.OnEvent += SetRectTransform;
         }
-
-        private void Start()
-        {
-            _dragManager.drag += SetRectTransform;
-        }
-
-        private void SetRectTransform(DragData data)
+        
+        private void SetRectTransform(Drag data)
         {
             _transform.position = data.pos;
             _transform.sizeDelta = data.size;
@@ -27,7 +23,7 @@ namespace _1.Script.UserScript.DragManagerScript
 
         private void OnDestroy()
         {
-            _dragManager.drag -= SetRectTransform;
+            EventBus<Drag>.OnEvent -= SetRectTransform;
         }
         
     }
