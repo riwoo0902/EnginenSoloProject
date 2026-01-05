@@ -12,10 +12,10 @@ namespace _1.Script.UserScript.DragManagerScript
         private void Awake()
         {
             _transform = GetComponent<RectTransform>();
-            EventBus<Drag>.OnEvent += SetRectTransform;
+            EventBus<DragSize>.OnEvent += SetRectTransform;
         }
         
-        private void SetRectTransform(Drag data)
+        private void SetRectTransform(DragSize data)
         {
             _transform.position = data.pos;
             _transform.sizeDelta = data.size;
@@ -23,7 +23,7 @@ namespace _1.Script.UserScript.DragManagerScript
 
         private void OnDestroy()
         {
-            EventBus<Drag>.OnEvent -= SetRectTransform;
+            EventBus<DragSize>.OnEvent -= SetRectTransform;
         }
         
     }

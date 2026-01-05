@@ -8,7 +8,16 @@ namespace _10.InputSystem
     public class InputSo : ScriptableObject,InputSystem_Actions.IPlayerActions
     {
         public Vector2 MousePosUI { get; private set; }
-        public Vector2 MousePosWorld { get; private set; }
+        
+        public Vector2 MousePosWorld
+        {
+            get
+            {
+                if(_mainCamera == null) _mainCamera = Camera.main;
+                return _mainCamera.ScreenToWorldPoint(MousePosUI);
+            }
+        }
+
         public Vector3 MoveDir { get; private set; }
         public bool IsMove { get; private set; } = false;
         public Action jump;
@@ -61,7 +70,6 @@ namespace _10.InputSystem
         public void OnMouse(InputAction.CallbackContext context)
         {
             MousePosUI = context.ReadValue<Vector2>();
-            MousePosWorld = _mainCamera.ScreenToWorldPoint(MousePosUI);
         }
 
         public void OnLeftClick(InputAction.CallbackContext context)

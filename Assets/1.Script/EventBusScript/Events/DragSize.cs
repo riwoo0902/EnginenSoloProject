@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace _1.Script.EventBusScript.Events
 {
-    public class Drag : IEvent
+    public class DragSize : IEvent
     {
-        public Drag(Vector2 position, Vector2 size)
+        public DragSize(Vector2 position, Vector2 size)
         {
             pos =  position;
             this.size = size;

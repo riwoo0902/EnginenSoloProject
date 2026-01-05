@@ -1,8 +1,5 @@
-using System;
 using _1.Script.CollisionManagerScript;
-using _1.Script.NotifyValueScript;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace _1.Script.EntityScript
 {
