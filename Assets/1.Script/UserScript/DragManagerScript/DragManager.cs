@@ -30,14 +30,14 @@ namespace _1.Script.UserScript.DragManagerScript
 
         private void Start()
         {
-            EventBus<Drag>.Raise(new Drag(Vector2.zero, Vector2.zero));
+            EventBus<DragSize>.Raise(new DragSize(Vector2.zero, Vector2.zero));
         }
 
         private Vector2 _clickStartPoint;
         
         private void DragStart()
         {
-            EventBus<Drag>.Raise(new Drag(Vector2.zero, Vector2.zero));
+            EventBus<DragSize>.Raise(new DragSize(Vector2.zero, Vector2.zero));
             _isDragging = true;
            _clickStartPoint = input.MousePosUI;
         }
@@ -47,12 +47,13 @@ namespace _1.Script.UserScript.DragManagerScript
             Vector2 a = input.MousePosUI - _clickStartPoint;
             Vector2 b = _clickStartPoint + a * 0.5f;
             Vector2 c = math.abs(a);
-            EventBus<Drag>.Raise(new Drag(b,c));
+            EventBus<DragSize>.Raise(new DragSize(b,c));
         }
 
         private void DragEnd()
         {
-            EventBus<Drag>.Raise(new Drag(Vector2.zero, Vector2.zero));
+            EventBus<DragSize>.Raise(new DragSize(Vector2.zero, Vector2.zero));
+            EventBus<DragEnd>.Raise(new DragEnd(_clickStartPoint, input.MousePosUI));
             _isDragging  = false;
         }
 
