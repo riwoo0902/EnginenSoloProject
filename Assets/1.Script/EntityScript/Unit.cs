@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace _1.Script.EntityScript
 {
-    public class Entity : MonoBehaviour
+    public class Unit : MonoBehaviour
     {
         private void Awake()
         {
-            EntityManager.Entities.Add(this);
+            UnitManager.Entities.Add(this);
         }
 
         private void OnDestroy()
         {
-            EntityManager.Entities.Remove(this);
+            UnitManager.Entities.Remove(this);
         }
         
     }

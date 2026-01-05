@@ -9,9 +9,7 @@ namespace _1.Script.UserScript.DragManagerScript
 {
     public class EntitySelectManager : MonoBehaviour
     {
-        public List<Entity> selectEntities = new();
-        
-        
+        public List<Unit> selectEntities = new();
         
         private void Awake()
         {
@@ -41,7 +39,7 @@ namespace _1.Script.UserScript.DragManagerScript
             
             Rect dragRect = new Rect(rectstartPos, math.abs(size));
             
-            foreach (Entity e in EntityManager.Entities)
+            foreach (Unit e in UnitManager.Entities)
             {
                 Vector2 a = _camera.WorldToScreenPoint(e.transform.position);
                 if (dragRect.Contains(a))
