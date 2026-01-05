@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using _1.Script.CollisionManagerScript;
 using _1.Script.EntityScript;
 using _1.Script.EventBusScript;
 using _1.Script.EventBusScript.Events;
@@ -10,19 +9,21 @@ namespace _1.Script.UserScript.DragManagerScript
 {
     public class EntitySelectManager : MonoBehaviour
     {
-        public List<Entity> entities = new();
+        public List<Entity> selectEntities = new();
+        
+        
         
         private void Awake()
         {
             _camera = Camera.main;
-            EventBus<DragEnd>.OnEvent += DragEnd;
+            EventBus<DragEnd>.OnEvent += EntitySelect;
         }
         
         private Camera _camera;
         
-        private void DragEnd(DragEnd dragEnd)
+        private void EntitySelect(DragEnd dragEnd)
         {
-            entities.Clear();
+            selectEntities.Clear();
             
             Vector2 size = (dragEnd.dragEndPos - dragEnd.dragStartPos);
 
@@ -40,12 +41,12 @@ namespace _1.Script.UserScript.DragManagerScript
             
             Rect dragRect = new Rect(rectstartPos, math.abs(size));
             
-            foreach (Entity e in CollisionManage<Entity>.Values)
+            foreach (Entity e in EntityManager.Entities)
             {
                 Vector2 a = _camera.WorldToScreenPoint(e.transform.position);
                 if (dragRect.Contains(a))
                 {
-                    entities.Add(e);
+                    selectEntities.Add(e);
                 }
             }
             
@@ -53,7 +54,7 @@ namespace _1.Script.UserScript.DragManagerScript
 
         private void OnDestroy()
         {
-            EventBus<DragEnd>.OnEvent -= DragEnd;
+            EventBus<DragEnd>.OnEvent -= EntitySelect;
         }
         
         

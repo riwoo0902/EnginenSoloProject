@@ -1,29 +1,19 @@
 using _1.Script.CollisionManagerScript;
+using _1.Script.UserScript.DragManagerScript;
 using UnityEngine;
 
 namespace _1.Script.EntityScript
 {
-    [RequireComponent(typeof(Collider))]
-    public class Entity : MonoBehaviour,ICanCollision
+    public class Entity : MonoBehaviour
     {
-        private Collider _collider;
-        
         private void Awake()
         {
-            _collider = GetComponent<Collider>();
-            if (CollisionManage<Entity>.TryAddPool(_collider, this))
-            {
-                
-            }
-            else
-            {
-                Debug.Log("Error");
-            }
+            EntityManager.Entities.Add(this);
         }
 
         private void OnDestroy()
         {
-            CollisionManage<Entity>.RemovePool(_collider);
+            EntityManager.Entities.Remove(this);
         }
         
     }
