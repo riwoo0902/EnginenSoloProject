@@ -1,6 +1,8 @@
 using System;
 using _1.Script.CollisionManagerScript;
+using _1.Script.NotifyValueScript;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace _1.Script.EntityScript
 {
@@ -12,12 +14,20 @@ namespace _1.Script.EntityScript
         private void Awake()
         {
             _collider = GetComponent<Collider>();
-            CollisionManage<Entity>.TryAddPool(_collider, this);
+            if (CollisionManage<Entity>.TryAddPool(_collider, this))
+            {
+                
+            }
+            else
+            {
+                Debug.Log("Error");
+            }
         }
 
         private void OnDestroy()
         {
             CollisionManage<Entity>.RemovePool(_collider);
         }
+        
     }
 }

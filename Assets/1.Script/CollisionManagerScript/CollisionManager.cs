@@ -25,23 +25,15 @@ namespace _1.Script.CollisionManagerScript
             return Colliders.TryGetValue(collider, out t);
         }
 
-        public static bool HasPool(Collider collider)
+        public static bool HasPoolKey(Collider collider)
         {
             return Colliders.ContainsKey(collider);
         }
-
-        public static List<T> TryGetPoolAll(Collider[] colliders)
+        public static bool HasPoolValue(T collider)
         {
-            List<T> result = new List<T>();
-            foreach (Collider value in colliders)
-            {
-                if (TryGetPool(value, out T t))
-                {
-                    result.Add(t);
-                }
-            }
-            return result;
+            return Colliders.ContainsValue(collider);
         }
+        
         public static void TryGetPoolAll(Collider[] colliders,List<T> result)
         {
             result ??= new List<T>();
@@ -54,9 +46,10 @@ namespace _1.Script.CollisionManagerScript
                     result.Add(t);
                 }
             }
-            
         }
         public static int Count => Colliders.Count;
+        public static Collider[] Keys => Colliders.Keys.ToArray();
+        public static T[] Values => Colliders.Values.ToArray();
         
     }
 
