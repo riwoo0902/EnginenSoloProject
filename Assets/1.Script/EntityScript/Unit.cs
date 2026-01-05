@@ -1,5 +1,3 @@
-using _1.Script.CollisionManagerScript;
-using _1.Script.UserScript.DragManagerScript;
 using UnityEngine;
 
 namespace _1.Script.EntityScript
