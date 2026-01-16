@@ -6,7 +6,7 @@ namespace _1.Script.Player
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerMoveTest : MonoBehaviour
     {
-        [SerializeField] private InputSo input;
+        [SerializeField] private InputSO input;
         [SerializeField] private float moveSpeed;
 
         private Rigidbody _rigid;
@@ -18,7 +18,7 @@ namespace _1.Script.Player
 
         private void FixedUpdate()
         {
-            _rigid.linearVelocity = input.MoveDir * moveSpeed;
+            _rigid.linearVelocity = input.MoveDirection * moveSpeed;
         }
     }
 }
