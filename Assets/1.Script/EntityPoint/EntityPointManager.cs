@@ -30,6 +30,7 @@ namespace _1.Script.EntityPoint
             EntityPoint point = GetEntityPoint();
             point.SetTarget(entity.transform);
             _entityPoints.Add(entity, point);
+            
         }
 
 
