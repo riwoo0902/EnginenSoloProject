@@ -1,6 +1,6 @@
 using System;
 
-namespace _1.Script.NotifyValueScript
+namespace _1.Script.DataStructure.NotifyValueScript
 {
     public class NotifyValue<T>
     {
