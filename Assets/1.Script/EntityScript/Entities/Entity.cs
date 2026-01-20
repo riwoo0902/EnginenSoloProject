@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities
 {
-    public abstract class Entity : ModuleOwner
+    public abstract class Entity : ModuleOwner,IHaveTeam
     {
-        public Team myTeam;
+        public Team MyTeam { get;  private set; }
         
         protected override void Awake()
         {
@@ -17,8 +17,10 @@ namespace _1.Script.EntityScript.Entities
             
         }
 
-        public bool IsTeam(Team team) => myTeam == team;
-        
+        public bool IsTeam(Team team)
+        {
+            return MyTeam == team;
+        }
         
     }
 }
