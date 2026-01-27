@@ -2,8 +2,14 @@ using UnityEngine;
 
 namespace _2.So._1.Scripts.DataBase
 {
-    public abstract class IndexedAsset : ScriptableObject
+    public abstract class IndexedAsset : ScriptableObject, IIndexed
     {
-        public int index;
+        [field:SerializeField] public int Index { get; set; }
+        
+    }
+
+    public interface IIndexed
+    {
+        public int Index { get; set; }
     }
 }
