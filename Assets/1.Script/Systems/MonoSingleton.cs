@@ -5,24 +5,19 @@ namespace _1.Script.Systems
 {
     public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        private static readonly object LockObject = new object();
         private static T _instance = null;
         
         public static T Instance
         {
             get
             {
-                lock (LockObject)
+                if (_instance == null )
                 {
-                    if (_instance == null )
-                    {
-                        _instance = FindAnyObjectByType<T>();
-                        if(_instance != null) return _instance;
-                        _instance = new GameObject(typeof(T).Name).AddComponent<T>();
-                        DontDestroyOnLoad(_instance.gameObject);
-                    }
-                    return _instance;
+                    _instance = FindAnyObjectByType<T>();
+                    if(_instance != null) return _instance;
+                    _instance = new GameObject(typeof(T).Name).AddComponent<T>();
                 }
+                return _instance;
             }
         }
 

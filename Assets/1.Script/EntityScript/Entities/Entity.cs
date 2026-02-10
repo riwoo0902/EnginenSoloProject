@@ -1,26 +1,39 @@
+using System;
 using _1.Script.EntityScript.Module;
-using _1.Script.Systems.EventBusScript;
-using _1.Script.Systems.EventBusScript.Events;
+using _2.So._1.Scripts;
+using _2.So._1.Scripts.EventChannels;
 using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities
 {
-    public abstract class Entity : ModuleOwner,IHaveTeam
+    public abstract class Entity : ModuleOwner
     {
-        public Team MyTeam { get;  private set; }
+        [SerializeField] private EventChannel entityChannel;
+        public event Action<bool> Selection;
+        
+        public EntityData EntityData { get;  private set; }
         
         protected override void Awake()
         {
             base.Awake();
             
-            EventBus<EntitySpawn>.Raise(new EntitySpawn(this));
-            
         }
 
-        public bool IsTeam(Team team)
+        protected virtual void Start()
         {
-            return MyTeam == team;
+            entityChannel.RaiseEvent(EntityEvents.EntitySpawn.Init(this));
         }
         
+        protected virtual void OnDestroy()
+        {
+            entityChannel.RaiseEvent(EntityEvents.EntityDestroy.Init(this));
+        }
+
+        public void SelectEntity(bool select)
+        {
+            Selection?.Invoke(select);
+        }
+        
+
     }
 }
