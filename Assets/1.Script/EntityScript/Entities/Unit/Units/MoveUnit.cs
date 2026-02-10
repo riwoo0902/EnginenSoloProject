@@ -1,6 +1,6 @@
 namespace _1.Script.EntityScript.Entities.Unit.Units
 {
-    public abstract class MoveUnit : Entities.Unit.Unit
+    public abstract class MoveUnit : Unit
     {
         
     }

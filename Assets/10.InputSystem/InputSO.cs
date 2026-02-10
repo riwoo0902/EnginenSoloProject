@@ -27,44 +27,56 @@ namespace _10.InputSystem
             _controls.Player.Disable();
         }
 
-        public void SetCamara(Camera nowCamera)
-        {
-            _camera = nowCamera;
-        }
-
-        public Vector2 MoveDirection { get; private set; }
-        public void OnMove(InputAction.CallbackContext context)
-        {
-            MoveDirection = context.ReadValue<Vector2>();
-        }
-        
-        public event Action OnJumpKeyPressed;
-        public void OnJump(InputAction.CallbackContext context)
-        {
-            if(context.performed)
-                OnJumpKeyPressed?.Invoke();
-        }
+        public void SetCamara(Camera nowCamera) => _camera = nowCamera;
         
         
-        public Vector2 MouseUIPosition { get; private set; }
-        public Vector2 MouseWorldPosition => _camera.ScreenToWorldPoint(MouseUIPosition);
+        public Vector2 mouseUIPosition;
+        public Vector2 MouseWorldPosition => _camera.ScreenToWorldPoint(mouseUIPosition);
         public void OnMouse(InputAction.CallbackContext context)
         {
-            MouseUIPosition = context.ReadValue<Vector2>();
+            mouseUIPosition = context.ReadValue<Vector2>();
         }
 
+        
         public event Action OnMouseLeftPressed;
+        public event Action OnMouseLeftReleased;
         public void OnLeftClick(InputAction.CallbackContext context)
         {
             if(context.performed)
                 OnMouseLeftPressed?.Invoke();
+            
+            if(context.canceled)
+               OnMouseLeftReleased?.Invoke();
+                    
         }
+        
+        
         public event Action OnMouseRightPressed;
+        public event Action OnMouseRightReleased;
         public void OnRightClick(InputAction.CallbackContext context)
         {
             if(context.performed)
                 OnMouseRightPressed?.Invoke();
+            
+            if(context.canceled)
+                OnMouseRightReleased?.Invoke();
         }
+
+        
+        public bool isAltPressed = false;
+        public void OnAlt(InputAction.CallbackContext context)
+        {
+            isAltPressed = context.ReadValueAsButton();
+        }
+
+        
+        public bool isShiftPressed = false;
+        public void OnShift(InputAction.CallbackContext context)
+        {
+            isShiftPressed = context.ReadValueAsButton();
+        }
+        
+        
         
     }
 }
