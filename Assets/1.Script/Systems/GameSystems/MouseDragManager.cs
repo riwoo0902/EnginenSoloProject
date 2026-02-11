@@ -48,6 +48,7 @@ namespace _1.Script.Systems.GameSystems
             DragData.isDrag = false;
             DragData.endPos = inputSo.mouseUIPosition;
             uiChannel.RaiseEvent(UIEvents.MouseDrag.Init(SettingAndSendDragData()));
+            uiChannel.RaiseEvent(UIEvents.MouseDragEnd.Init(DragData.minVec,DragData.maxVec));
         }
 
         private DragData SettingAndSendDragData()

@@ -1,11 +1,12 @@
 using System;
+using _1.Script.EntityScript.Entities;
 using UnityEngine;
 
 namespace _1.Script.EntityScript.EntityPointScript
 {
     public class EntityPoint : MonoBehaviour
     {
-        [SerializeField] private Transform entityTarget;
+        [SerializeField] private Entity entityTarget;
         public bool IsHaveTarget => entityTarget != null;
         private Vector3 _pos;
         private const float PlusSize = 1.2f;
@@ -19,28 +20,34 @@ namespace _1.Script.EntityScript.EntityPointScript
         {
             if(!IsHaveTarget) return;
             
-            Vector3 position = entityTarget.position+ _pos;
+            Vector3 position = entityTarget.transform.position+ _pos;
             position.y = 0.55f;
             transform.position = position;
         }
 
-        public void SetTarget(Transform target)
+        public void SetTarget(Entity target)
         {
             entityTarget = target;
+            Vector3 size = target.transform.lossyScale;
+            size.y = 0.05f;
+            transform.localScale = size * PlusSize;
+            gameObject.SetActive(false);
 
-            if (entityTarget != null)
-            {
-                gameObject.SetActive(true);
-                Vector3 size = target.lossyScale;
-                size.y = 0.05f;
-                transform.localScale = size * PlusSize;
-            }
-            else
-            {
-                gameObject.SetActive(false);
-            }
-            
+            entityTarget.Selection += Show;
         }
+
+        public void RemoveTarget()
+        {
+            entityTarget.Selection -= Show;
+            entityTarget = null;
+        }
+
+        private void Show(bool b)
+        {
+            gameObject.SetActive(b);
+        }
+        
+        
         
         
     }
