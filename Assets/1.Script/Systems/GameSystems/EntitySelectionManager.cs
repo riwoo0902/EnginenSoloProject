@@ -10,7 +10,6 @@ namespace _1.Script.Systems.GameSystems
     public class EntitySelectionManager : MonoSingleton<EntitySelectionManager>
     {
         [SerializeField] private EventChannel uiChannel;
-        //[SerializeField] private EventChannel entityChannel;
 
         [SerializeField] private int selectRange = 50;
         
@@ -51,7 +50,6 @@ namespace _1.Script.Systems.GameSystems
                     entity.SelectEntity(false);
                 }
             }
-            
         }
 
         private bool CheckSelection(Entity entity, MouseDragEndEvent evt)
@@ -69,7 +67,6 @@ namespace _1.Script.Systems.GameSystems
             
             return false;
         }
-        
         
     }
 }

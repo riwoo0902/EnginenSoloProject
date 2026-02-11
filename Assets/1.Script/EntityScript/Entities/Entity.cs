@@ -26,6 +26,7 @@ namespace _1.Script.EntityScript.Entities
         
         protected virtual void OnDestroy()
         {
+            SelectEntity(false);
             entityChannel.RaiseEvent(EntityEvents.EntityDestroy.Init(this));
         }
 

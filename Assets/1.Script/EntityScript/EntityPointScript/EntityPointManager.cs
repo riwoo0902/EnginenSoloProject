@@ -23,7 +23,7 @@ namespace _1.Script.EntityScript.EntityPointScript
         public void AddEntityPoint(EntitySpawnEvent entity)
         {
             EntityPoint point = GetEntityPoint();
-            point.SetTarget(entity.entity.transform);
+            point.SetTarget(entity.entity);
             _entityPoints.Add(entity.entity, point);
             entityPoints.Add(point);
         }
@@ -32,7 +32,7 @@ namespace _1.Script.EntityScript.EntityPointScript
         {
             if (_entityPoints.TryGetValue(entity.entity, out EntityPoint point))
             {
-                point.SetTarget(null);
+                point.RemoveTarget();
                 _entityPoints.Remove(entity.entity);
             }
         }
