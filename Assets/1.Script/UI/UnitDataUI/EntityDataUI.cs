@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace _1.Script.UI.UnitDataUI
 {
-    public class EntityDataUI : AbstractUI
+    public abstract class EntityDataUI : AbstractUI
     {
         [SerializeField] private Entity showEntity;
 

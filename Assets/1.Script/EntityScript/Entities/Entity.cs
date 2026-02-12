@@ -8,10 +8,9 @@ namespace _1.Script.EntityScript.Entities
 {
     public abstract class Entity : ModuleOwner
     {
+        [SerializeField] public int Id { get; private set; }
         [SerializeField] private EventChannel entityChannel;
         public event Action<bool> Selection;
-        
-        public EntityData EntityData { get;  private set; }
         
         protected override void Awake()
         {
@@ -26,7 +25,6 @@ namespace _1.Script.EntityScript.Entities
         
         protected virtual void OnDestroy()
         {
-            SelectEntity(false);
             entityChannel.RaiseEvent(EntityEvents.EntityDestroy.Init(this));
         }
 
