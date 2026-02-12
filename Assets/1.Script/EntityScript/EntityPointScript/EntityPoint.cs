@@ -31,7 +31,6 @@ namespace _1.Script.EntityScript.EntityPointScript
             Vector3 size = target.transform.lossyScale;
             size.y = 0.05f;
             transform.localScale = size * PlusSize;
-            gameObject.SetActive(false);
 
             entityTarget.Selection += Show;
         }
@@ -40,6 +39,7 @@ namespace _1.Script.EntityScript.EntityPointScript
         {
             entityTarget.Selection -= Show;
             entityTarget = null;
+            gameObject.SetActive(false);
         }
 
         private void Show(bool b)

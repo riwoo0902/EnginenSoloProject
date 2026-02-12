@@ -54,7 +54,7 @@ namespace _1.Script.EntityScript.EntityPointScript
                     Debug.LogError("entityPointPrefab is not have EntityPoint");
                 }
             }
-            entityPoint.gameObject.SetActive(true);
+            entityPoint.gameObject.SetActive(false);
             return entityPoint;
         }
 

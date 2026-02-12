@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace _1.Script.UI
 {
+    [RequireComponent(typeof(RectTransform))]
     public abstract class AbstractUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,IIndexed
     {
         public int Index { get; set; }
