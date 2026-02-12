@@ -49,6 +49,8 @@ namespace _1.Script.Systems.GameSystems
             {
                 NormalDrag(evt);
             }
+            
+            uiChannel.RaiseEvent(UIEvents.EntitySelection.Init(selectedEntities));
         }
 
         #region Drag
@@ -111,7 +113,6 @@ namespace _1.Script.Systems.GameSystems
         }
 
         #endregion
-        
         
         private bool CheckSelection(Entity entity, MouseDragEndEvent evt)
         {
