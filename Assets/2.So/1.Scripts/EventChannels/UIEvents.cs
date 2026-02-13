@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using _1.Script.EntityScript.Entities;
 using _1.Script.Systems.GameSystems;
 using UnityEngine;
 
@@ -7,6 +9,7 @@ namespace _2.So._1.Scripts.EventChannels
     {
         public static readonly MouseDragEvent MouseDrag =  new MouseDragEvent();
         public static readonly MouseDragEndEvent MouseDragEnd =  new MouseDragEndEvent();
+        public static readonly EntitySelectionEvent EntitySelection =  new EntitySelectionEvent();
 
     }
 
@@ -30,6 +33,17 @@ namespace _2.So._1.Scripts.EventChannels
         {
             startPos =  data1;
             endPos = data2;
+            return this;
+        }
+    }
+    
+    public class EntitySelectionEvent : GameEvent
+    {
+        public List<Entity> entities;
+        
+        public EntitySelectionEvent Init(List<Entity> data)
+        {
+            entities = data;
             return this;
         }
     }
