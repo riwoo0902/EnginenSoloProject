@@ -1,4 +1,4 @@
-﻿namespace _1.Script.EntityScript.Module
+﻿namespace _1.Script.EntityScript.ModuleSystem
 {
     public interface IModule
     {

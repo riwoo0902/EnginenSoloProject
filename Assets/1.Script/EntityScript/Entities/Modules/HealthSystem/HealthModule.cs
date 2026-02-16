@@ -1,9 +1,9 @@
 using System;
-using _1.Script.EntityScript.Entities.StatSystem;
-using _1.Script.EntityScript.Module;
+using _1.Script.EntityScript.Entities.Modules.StatSystem;
+using _1.Script.EntityScript.ModuleSystem;
 using UnityEngine;
 
-namespace _1.Script.EntityScript.Entities.HealthSystem
+namespace _1.Script.EntityScript.Entities.Modules.HealthSystem
 {
     public class HealthModule : MonoBehaviour , IModule
     {

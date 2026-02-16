@@ -6,7 +6,7 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace _1.Script.EntityScript.Entities.StatSystem.Editor
+namespace _1.Script.EntityScript.Entities.Modules.StatSystem.Editor
 {
     [CustomEditor(typeof(StatSettingTable))]
     public class StatSettingTableEditor : UnityEditor.Editor
@@ -39,7 +39,7 @@ namespace _1.Script.EntityScript.Entities.StatSystem.Editor
                 return $"{so.StatName} = {index++}";
             }));
             
-            string code = string.Format(CodeFormat.EnumFormat, "_1.Script.EntityScript.Entities.StatSystem", "Stats", enumString);
+            string code = string.Format(CodeFormat.EnumFormat, "_1.Script.EntityScript.Entities.Modules.StatSystem", "Stats", enumString);
 
             string scriptPath = AssetDatabase.GetAssetPath( MonoScript.FromScriptableObject(this));
             string directoryName = Path.GetDirectoryName(scriptPath); //이 코드가 있는 디렉토리를 가져와.

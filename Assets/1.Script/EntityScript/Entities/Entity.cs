@@ -1,5 +1,5 @@
 using System;
-using _1.Script.EntityScript.Module;
+using _1.Script.EntityScript.ModuleSystem;
 using _2.So._1.Scripts;
 using _2.So._1.Scripts.EventChannels;
 using UnityEngine;

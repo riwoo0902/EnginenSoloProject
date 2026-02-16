@@ -1,8 +1,7 @@
-using System;
 using _2.So._1.Scripts.DataBase;
 using UnityEngine;
 
-namespace _1.Script.EntityScript.Entities.StatSystem
+namespace _1.Script.EntityScript.Entities.Modules.StatSystem
 {
     [CreateAssetMenu(fileName = "New Stat", menuName = "Stat/Stat data")]
     public class StatSO : IndexedAsset

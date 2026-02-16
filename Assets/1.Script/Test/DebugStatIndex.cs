@@ -1,4 +1,4 @@
-using _1.Script.EntityScript.Entities.StatSystem;
+using _1.Script.EntityScript.Entities.Modules.StatSystem;
 using UnityEngine;
 
 namespace _1.Script.Test
