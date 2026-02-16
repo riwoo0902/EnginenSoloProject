@@ -5,12 +5,12 @@ namespace _1.Script.Test
 {
     public class DebugStatIndex : MonoBehaviour
     {
-        [SerializeField] private string _statName;
+        [SerializeField] private Stats _statName;
         
         [ContextMenu("DebugStatIndex")]
         private void StatIndex()
         {
-            Debug.Log(StatSettingTable.GetStatIndex(_statName));
+            Debug.Log((int)_statName);
         }
     }
 }

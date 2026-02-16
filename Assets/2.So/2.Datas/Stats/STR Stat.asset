@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Index>k__BackingField: 1
   <StatIcon>k__BackingField: {fileID: 0}
-  <StatName>k__BackingField: STR
+  <StatName>k__BackingField: AttackDamage
   <DisplayName>k__BackingField: STR
   minValue: 0
   maxValue: 9999999

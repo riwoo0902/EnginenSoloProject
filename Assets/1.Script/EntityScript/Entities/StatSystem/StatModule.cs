@@ -5,7 +5,14 @@ using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities.StatSystem
 {
-    public class StatModule : MonoBehaviour , IModule
+    public interface IStatModule
+    {
+        bool TryGetStat(Stats statName, out StatSO value);
+        void SubscribeStat(Stats statName, StatSO.ChangeStatValue handler);
+        void UnSubscribeStat(Stats statName, StatSO.ChangeStatValue handler);
+    }
+
+    public class StatModule : MonoBehaviour , IModule, IStatModule
     {
         private ModuleOwner _entity;
         
@@ -19,19 +26,21 @@ namespace _1.Script.EntityScript.Entities.StatSystem
             
             
         }
+
+        public bool TryGetStat(Stats statName, out StatSO value) => _statDict.TryGetValue((int)statName, out value);
         
         
-        public void SubscribeStat(string statName, StatSO.ChangeStatValue handler)
+        public void SubscribeStat(Stats statName, StatSO.ChangeStatValue handler)
         {
-            if (_statDict.TryGetValue(StatSettingTable.GetStatIndex(statName), out StatSO stat))
+            if (_statDict.TryGetValue((int)statName, out StatSO stat))
             {
                 stat.OnValueChanged += handler;
             }
         }
         
-        public void UnSubscribeStat(string statName, StatSO.ChangeStatValue handler)
+        public void UnSubscribeStat(Stats statName, StatSO.ChangeStatValue handler)
         {
-            if (_statDict.TryGetValue(StatSettingTable.GetStatIndex(statName), out StatSO stat))
+            if (_statDict.TryGetValue((int)statName, out StatSO stat))
             {
                 stat.OnValueChanged -= handler;
             }

@@ -26,9 +26,9 @@ namespace _1.Script.EntityScript.Module
         
         protected virtual void AfterInitComponents()
         {
-            foreach (IAfterInitModule afterInitModule in _moduleDict.Values.OfType<IAfterInitModule>())
+            foreach (IModule afterInitModule in _moduleDict.Values)
             {
-                afterInitModule.AfterInit();
+                afterInitModule.AfterInitialize();
             }
         }
 

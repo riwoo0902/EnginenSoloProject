@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b16db25ab45a42c49c559987d96a19aa, type: 3}
-  m_Name: MaxHP Stat
+  m_Name: AttackRange Stat
   m_EditorClassIdentifier: 
-  <Index>k__BackingField: 0
+  <Index>k__BackingField: 5
   <StatIcon>k__BackingField: {fileID: 0}
-  <StatName>k__BackingField: MaxHp
-  <DisplayName>k__BackingField: MHP
-  minValue: 1
+  <StatName>k__BackingField: AttackRange
+  <DisplayName>k__BackingField: ATR
+  minValue: 0
   maxValue: 9999999

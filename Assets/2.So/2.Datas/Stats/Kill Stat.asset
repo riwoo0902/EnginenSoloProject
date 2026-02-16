@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b16db25ab45a42c49c559987d96a19aa, type: 3}
-  m_Name: Speed Stat
+  m_Name: Kill Stat
   m_EditorClassIdentifier: 
-  <Index>k__BackingField: 0
+  <Index>k__BackingField: 4
   <StatIcon>k__BackingField: {fileID: 0}
-  <StatName>k__BackingField: MoveSpeed
-  <DisplayName>k__BackingField: SPD
+  <StatName>k__BackingField: KillCount
+  <DisplayName>k__BackingField: STR
   minValue: 0
   maxValue: 9999999

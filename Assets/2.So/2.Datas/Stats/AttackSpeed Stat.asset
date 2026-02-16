@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b16db25ab45a42c49c559987d96a19aa, type: 3}
-  m_Name: HP Stat
+  m_Name: AttackSpeed Stat
   m_EditorClassIdentifier: 
-  <Index>k__BackingField: 0
+  <Index>k__BackingField: 3
   <StatIcon>k__BackingField: {fileID: 0}
-  <StatName>k__BackingField: HP
-  <DisplayName>k__BackingField: HP
+  <StatName>k__BackingField: AttackSpeed
+  <DisplayName>k__BackingField: ASP
   minValue: 0
   maxValue: 9999999
