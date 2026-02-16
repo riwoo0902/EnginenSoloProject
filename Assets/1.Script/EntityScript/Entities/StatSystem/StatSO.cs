@@ -22,15 +22,10 @@ namespace _1.Script.EntityScript.Entities.StatSystem
             get => _value;
             set
             {
-                float previous = Value;
-                float nowValue = Mathf.Clamp(value, minValue, maxValue);
-                TryInvokeValueChangeEvent(nowValue, previous);
+                float previous = _value;
+                _value = Mathf.Clamp(value, minValue, maxValue);
+                TryInvokeValueChangeEvent(_value, previous);
             }
-        }
-
-        private void OnEnable()
-        {
-            
         }
 
         private void TryInvokeValueChangeEvent(float value, float previous)
@@ -41,6 +36,23 @@ namespace _1.Script.EntityScript.Entities.StatSystem
             }
             
         }
+
+        public void SetMaxValue(float value)
+        {
+            maxValue = value;
+            float previous = _value;
+            _value = Mathf.Clamp(_value, minValue, maxValue);
+            TryInvokeValueChangeEvent(_value, previous);
+        }
+        
+        public void SetMinValue(float value)
+        {
+            minValue = value;
+            float previous = _value;
+            _value = Mathf.Clamp(_value, minValue, maxValue);
+            TryInvokeValueChangeEvent(_value, previous);
+        }
+
 
         public StatSO Clone()
         {

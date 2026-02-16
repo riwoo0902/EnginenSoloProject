@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Stat Table
   m_EditorClassIdentifier: 
   <Datas>k__BackingField:
-  - {fileID: 11400000, guid: 5b10aa1dc2a06194c96055922ac47488, type: 2}
+  - {fileID: 11400000, guid: b92a9c314084d354096c07ee8ba3b641, type: 2}
   - {fileID: 11400000, guid: a8fcd7aa6bfd2d14fb42558aad947b4c, type: 2}
+  - {fileID: 11400000, guid: 04ef33659329b6447942528284c85317, type: 2}
+  - {fileID: 11400000, guid: 8e579a799f7584c4fa856b8d618e032e, type: 2}
+  - {fileID: 11400000, guid: 4c88973072443f849b259f2944dba0c0, type: 2}
+  - {fileID: 11400000, guid: 955ab275a9f35f5448a06673299672d9, type: 2}
