@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using _1.Script.EntityScript.Module;
+using _1.Script.EntityScript.ModuleSystem;
 using UnityEngine;
 
-namespace _1.Script.EntityScript.Entities.StatSystem
+namespace _1.Script.EntityScript.Entities.Modules.StatSystem
 {
     public interface IStatModule
     {

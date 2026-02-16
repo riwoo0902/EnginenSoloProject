@@ -1,5 +1,5 @@
 
-namespace _1.Script.EntityScript.Entities.StatSystem
+namespace _1.Script.EntityScript.Entities.Modules.StatSystem
 {
     public enum Stats
     {

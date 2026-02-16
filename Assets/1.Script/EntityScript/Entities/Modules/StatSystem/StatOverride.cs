@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace _1.Script.EntityScript.Entities.StatSystem
+namespace _1.Script.EntityScript.Entities.Modules.StatSystem
 {
     [Serializable]
     public class StatOverride
