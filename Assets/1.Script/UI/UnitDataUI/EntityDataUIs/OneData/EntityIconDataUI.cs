@@ -1,19 +1,22 @@
+using System;
+using _1.Script.EntityScript.Entities.Modules.VisualSystem;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _1.Script.UI.UnitDataUI.EntityDataUIs.OneData
 {
     public class EntityIconDataUI : MonoBehaviour
     {
-        private TextMeshProUGUI _textMesh;
+        private Image _icon;
 
         private void Awake()
         {
-            _textMesh = GetComponent<TextMeshProUGUI>();
+            _icon = GetComponent<Image>();
         }
 
-        public void SetText(string value)
+        public void SetSprite(Sprite icon)
         {
-            _textMesh.text = value;
+            _icon.sprite = icon;
         }
 
         public void OnOff(bool value)

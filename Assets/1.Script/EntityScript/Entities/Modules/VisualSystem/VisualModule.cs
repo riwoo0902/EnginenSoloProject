@@ -6,7 +6,7 @@ namespace _1.Script.EntityScript.Entities.Modules.VisualSystem
 {
     public class VisualModule : MonoBehaviour,IModule
     {
-        [SerializeField] private Sprite entityIcon;
+        [field:SerializeField] public Sprite EntityIcon { get; private set; }
         private Entity _entity;
         private Animator _animator;
         
