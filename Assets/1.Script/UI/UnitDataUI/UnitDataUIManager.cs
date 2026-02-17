@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using _1.Script.EntityScript.Entities;
 using _1.Script.UI.UnitDataUI.EntityDataUIs;
@@ -19,7 +20,13 @@ namespace _1.Script.UI.UnitDataUI
         {
             uiChannel.AddListener<EntitySelectionEvent>(ShowEntityData);
         }
-        
+
+        private void Start()
+        {
+            multiEntityDataUI.Off();
+            oneEntityDataUI.Off();
+        }
+
         private void OnDestroy()
         {
             uiChannel.RemoveListener<EntitySelectionEvent>(ShowEntityData);
