@@ -10,9 +10,14 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs
     public class OneEntityDataManager : MonoBehaviour
     {
         [SerializeField] private EntityNameDataUI entityNameUI;
-        [SerializeField] private KillCountDataUI entityKillCountUI;
+        [SerializeField] private StatDataUI killStatUI;
         [SerializeField] private HealthDataUI entityHealthUI;
         [SerializeField] private EntityIconDataUI entityIconUI;
+
+        [SerializeField] private StatDataUI attackDamageUI;
+        [SerializeField] private StatDataUI attackSpeedUI;
+        [SerializeField] private StatDataUI attackRangeUI;
+        [SerializeField] private StatDataUI moveSpeedUI;
         public void On(Entity entity)
         {
             gameObject.SetActive(true);
@@ -21,8 +26,8 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs
             IStatModule statModule = entity.GetModule<IStatModule>();
             Debug.Assert(statModule != null,"statModule is not found");
             
-            entityKillCountUI.OnOff(statModule.TryGetStat(Stats.KillCount, out StatSO killCountStat));
-            entityKillCountUI.SetData(killCountStat);
+            killStatUI.OnOff(statModule.TryGetStat(Stats.KillCount, out StatSO killCountStat));
+            killStatUI.SetData(killCountStat);
             
             HealthModule healthModule = entity.GetModule<HealthModule>();
             entityHealthUI.OnOff(statModule.TryGetStat(Stats.MaxHp, out StatSO maxHpStat) && healthModule != null);
@@ -32,9 +37,19 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs
             entityIconUI.OnOff(visualModule != null);
             entityIconUI.SetSprite(visualModule.EntityIcon);
             
+            attackDamageUI.OnOff(statModule.TryGetStat(Stats.AttackDamage, out StatSO attackDamageStat));
+            attackDamageUI.SetData(attackDamageStat);
+            
+            attackSpeedUI.OnOff(statModule.TryGetStat(Stats.AttackSpeed, out StatSO attackSpeedStat));
+            attackSpeedUI.SetData(attackSpeedStat);
+            
+            attackRangeUI.OnOff(statModule.TryGetStat(Stats.AttackRange, out StatSO attackRangeStat));
+            attackRangeUI.SetData(attackRangeStat);
+            
+            moveSpeedUI.OnOff(statModule.TryGetStat(Stats.MoveSpeed, out StatSO moveSpeedStat));
+            moveSpeedUI.SetData(moveSpeedStat);
             
             
-            Debug.Log("OneDataShow");
         }
 
         public void Off()
