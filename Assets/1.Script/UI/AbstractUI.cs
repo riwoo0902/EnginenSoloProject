@@ -24,8 +24,9 @@ namespace _1.Script.UI
             }
         }
 
-        public abstract void UIOn();
-        public abstract void UIOff();
+        public abstract void On();
+
+        public abstract void Off();
         
         public abstract void OnPointerEnter(PointerEventData eventData);
         public abstract void OnPointerClick(PointerEventData eventData);

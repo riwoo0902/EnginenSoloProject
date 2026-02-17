@@ -44,13 +44,20 @@ namespace _1.Script.EntityScript.Entities.Modules.HealthSystem
             Debug.Assert(statModule.TryGetStat(Stats.MaxHp, out _maxHpStat),"MaxHP Stat is not found");
             
             Hp = _maxHpStat.Value;
+            _maxHpStat.OnValueChanged += MaxHpStatOnOnValueChanged;
             
             
+        }
+
+        private void MaxHpStatOnOnValueChanged(float value, float oldValue)
+        {
+            Hp += 0;
         }
 
         private void OnDestroy()
         {
             OnHealthChange -= DeadChack;
+            _maxHpStat.OnValueChanged -= MaxHpStatOnOnValueChanged;
         }
 
 
@@ -63,5 +70,13 @@ namespace _1.Script.EntityScript.Entities.Modules.HealthSystem
                 
             }
         }
+
+        [ContextMenu("Damage 10")]
+        private void Damage10()
+        {
+            Hp -= 10;
+        }
+        
+        
     }
 }

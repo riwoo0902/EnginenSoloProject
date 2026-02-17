@@ -6,7 +6,7 @@ namespace _1.Script.EntityScript.Entities.Modules.StatSystem
     [CreateAssetMenu(fileName = "New Stat", menuName = "Stat/Stat data")]
     public class StatSO : IndexedAsset
     {
-        public delegate void ChangeStatValue(StatSO stat, float value,float oldValue);
+        public delegate void ChangeStatValue(float value,float oldValue);
         public event ChangeStatValue OnValueChanged;
         
         [field : SerializeField] public Sprite StatIcon { get; private set; }
@@ -31,7 +31,7 @@ namespace _1.Script.EntityScript.Entities.Modules.StatSystem
         {
             if (Mathf.Approximately(value, previous) == false)
             {
-                OnValueChanged?.Invoke(this, value, previous);
+                OnValueChanged?.Invoke(value, previous);
             }
             
         }
