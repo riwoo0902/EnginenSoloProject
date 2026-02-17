@@ -14,7 +14,7 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs
             
             
             
-            Debug.Log("MultiDataShow");
+            
         }
         
         public void Off()
