@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581693565572839049, guid: 1d9358fa65d84834b847278c908eb790, type: 3}
       propertyPath: statOverrides.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3581693565572839049, guid: 1d9358fa65d84834b847278c908eb790, type: 3}
       propertyPath: statOverrides.Array.data[0].stat
@@ -39,7 +39,7 @@ PrefabInstance:
     - target: {fileID: 3581693565572839049, guid: 1d9358fa65d84834b847278c908eb790, type: 3}
       propertyPath: statOverrides.Array.data[5].stat
       value: 
-      objectReference: {fileID: 11400000, guid: d5afc469c69defb44ad5c5bc5ab52d18, type: 2}
+      objectReference: {fileID: 11400000, guid: 955ab275a9f35f5448a06673299672d9, type: 2}
     - target: {fileID: 3581693565572839049, guid: 1d9358fa65d84834b847278c908eb790, type: 3}
       propertyPath: statOverrides.Array.data[0].startValue
       value: 100
@@ -59,6 +59,10 @@ PrefabInstance:
     - target: {fileID: 3581693565572839049, guid: 1d9358fa65d84834b847278c908eb790, type: 3}
       propertyPath: statOverrides.Array.data[4].startValue
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581693565572839049, guid: 1d9358fa65d84834b847278c908eb790, type: 3}
+      propertyPath: statOverrides.Array.data[5].startValue
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7123728357516354121, guid: 1d9358fa65d84834b847278c908eb790, type: 3}
       propertyPath: m_LocalPosition.x

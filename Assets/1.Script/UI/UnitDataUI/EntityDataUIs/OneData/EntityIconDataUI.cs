@@ -7,6 +7,7 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs.OneData
 {
     public class EntityIconDataUI : MonoBehaviour
     {
+        [SerializeField] private Sprite defaultIcon;
         private Image _icon;
 
         private void Awake()
@@ -16,7 +17,7 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs.OneData
 
         public void SetSprite(Sprite icon)
         {
-            _icon.sprite = icon;
+            _icon.sprite = icon != null ? icon : defaultIcon;
         }
 
         public void OnOff(bool value)

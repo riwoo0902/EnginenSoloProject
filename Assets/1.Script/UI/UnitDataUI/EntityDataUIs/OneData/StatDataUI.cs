@@ -5,10 +5,12 @@ using UnityEngine;
 
 namespace _1.Script.UI.UnitDataUI.EntityDataUIs.OneData
 {
-    public class KillCountDataUI : MonoBehaviour
+    public class StatDataUI : MonoBehaviour
     {
+        [SerializeField] private string baseText;
         private TextMeshProUGUI _textMesh;
         private StatSO _stat;
+        
 
         private void Awake()
         {
@@ -29,13 +31,13 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs.OneData
             if (_stat != null)
             {
                 _stat.OnValueChanged += ChangedValue;
-                _textMesh.text = "Kills : " + _stat.Value;
+                _textMesh.text = baseText + _stat.Value;
             }
         }
 
         private void ChangedValue(float value, float oldValue)
         {
-            _textMesh.text = "Kills : " + value;
+            _textMesh.text = baseText + value;
         }
 
         public void OnOff(bool value)

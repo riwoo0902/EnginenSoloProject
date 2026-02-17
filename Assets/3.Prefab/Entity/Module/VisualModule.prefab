@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84bc4574a9234738bc774d46916a34a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <EntityIcon>k__BackingField: {fileID: 21300000, guid: 3bddd46ab14e5184db7697070968a12e, type: 3}
+  <EntityIcon>k__BackingField: {fileID: 0}
 --- !u!95 &3248375289206897368
 Animator:
   serializedVersion: 7
