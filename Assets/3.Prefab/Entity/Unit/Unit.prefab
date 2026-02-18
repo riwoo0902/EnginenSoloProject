@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unit
       objectReference: {fileID: 0}
+    - target: {fileID: 2837409528095569870, guid: 1d9358fa65d84834b847278c908eb790, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b235178bda206dc4c817eb88d453f665, type: 2}
     - target: {fileID: 3581693565572839049, guid: 1d9358fa65d84834b847278c908eb790, type: 3}
       propertyPath: statOverrides.Array.size
       value: 6
