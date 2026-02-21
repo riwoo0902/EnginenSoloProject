@@ -8,7 +8,6 @@ namespace _1.Script.EntityScript.Entities
 {
     public abstract class Entity : ModuleOwner
     {
-        [SerializeField] public int Id { get; private set; }
         [SerializeField] private EventChannel entityChannel;
         public event Action<bool> Selection;
         

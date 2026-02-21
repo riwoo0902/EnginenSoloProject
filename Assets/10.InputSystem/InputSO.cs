@@ -10,7 +10,6 @@ namespace _10.InputSystem
         private InputSystem_Actions _controls;
 
         private Camera _camera;
-        
         private void OnEnable()
         {
             if (_controls == null)

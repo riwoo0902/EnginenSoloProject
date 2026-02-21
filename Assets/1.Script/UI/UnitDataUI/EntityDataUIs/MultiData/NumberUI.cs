@@ -1,30 +1,38 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace _1.Script.UI.UnitDataUI.EntityDataUIs.MultiData
 {
-    public class NumberUI : AbstractUI
+    public class NumberUI : MonoBehaviour
     {
+        private Button _button;
         public int ShowPage { get; set; }
         public event Action<int> OnPageButtonClick;
 
-        public override void On()
+        private void Awake()
         {
-            
+            _button = GetComponent<Button>();
+            _button.onClick.AddListener(OnPointerClick);
         }
 
-        public override void Off()
+        private void OnDestroy()
         {
-            
+            _button.onClick.RemoveAllListeners();
         }
 
-        public override void OnPointerEnter(PointerEventData eventData)
+        public void On()
         {
-            
+            gameObject.SetActive(true);
         }
 
-        public override void OnPointerClick(PointerEventData eventData)
+        public void Off()
+        {
+            gameObject.SetActive(false);
+        }
+
+        private void OnPointerClick()
         {
             OnPageButtonClick?.Invoke(ShowPage);
         }
