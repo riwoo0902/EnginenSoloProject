@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
 using _10.InputSystem;
 using _2.So._1.Scripts;
 using _2.So._1.Scripts.EventChannels;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace _1.Script.Systems.GameSystems
 {
@@ -12,7 +15,7 @@ namespace _1.Script.Systems.GameSystems
         [SerializeField] private EventChannel uiChannel;
 
         private static readonly DragData DragData = new DragData();
-        
+        public bool canDrag = true;
         protected override void Awake()
         {
             base.Awake();
@@ -22,12 +25,15 @@ namespace _1.Script.Systems.GameSystems
 
         private void Update()
         {
+            canDrag = !EventSystem.current.IsPointerOverGameObject();
+            
             if (DragData.isDrag)
             {
                 DragData.endPos = inputSo.mouseUIPosition;
+                uiChannel.RaiseEvent(UIEvents.MouseDrag.Init(SettingAndSendDragData()));
             }
             
-            uiChannel.RaiseEvent(UIEvents.MouseDrag.Init(SettingAndSendDragData()));
+            
         }
 
         private void OnDestroy()
@@ -38,17 +44,28 @@ namespace _1.Script.Systems.GameSystems
         
         private void DragStart()
         {
-            DragData.isDrag = true;
-            DragData.startPos = inputSo.mouseUIPosition;
-            uiChannel.RaiseEvent(UIEvents.MouseDrag.Init(SettingAndSendDragData()));
-        }
+            if (canDrag)
+            {
+                DragData.isDrag = true;
+                DragData.startPos = inputSo.mouseUIPosition;
+                uiChannel.RaiseEvent(UIEvents.MouseDrag.Init(SettingAndSendDragData()));
+            }
+            else
+            {
+                Debug.Log("UI Click");
+            }
+        } 
         
         private void DragEnd()
         {
-            DragData.isDrag = false;
-            DragData.endPos = inputSo.mouseUIPosition;
-            uiChannel.RaiseEvent(UIEvents.MouseDrag.Init(SettingAndSendDragData()));
-            uiChannel.RaiseEvent(UIEvents.MouseDragEnd.Init(DragData.minVec,DragData.maxVec));
+            if (DragData.isDrag)
+            {
+                DragData.isDrag = false;
+                DragData.endPos = inputSo.mouseUIPosition;
+                uiChannel.RaiseEvent(UIEvents.MouseDrag.Init(SettingAndSendDragData()));
+                uiChannel.RaiseEvent(UIEvents.MouseDragEnd.Init(DragData.minVec,DragData.maxVec));
+            }
+            
         }
 
         private DragData SettingAndSendDragData()
