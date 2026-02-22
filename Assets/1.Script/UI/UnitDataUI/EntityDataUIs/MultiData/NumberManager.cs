@@ -84,7 +84,6 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs.MultiData
 
         private void PageChange(int page)
         {
-            Debug.Log(page);
             multiDataUIManager.SetData(_numberUIsDict[page]);
         }
         
