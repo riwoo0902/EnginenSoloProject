@@ -53,10 +53,7 @@ namespace _1.Script.Systems.GameSystems
                 DragData.startPos = inputSo.mouseUIPosition;
                 uiChannel.RaiseEvent(UIEvents.MouseDrag.Init(SettingAndSendDragData()));
             }
-            else
-            {
-                Debug.Log("UI Click");
-            }
+            
         } 
         
         private void DragEnd()

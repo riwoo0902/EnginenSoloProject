@@ -6405,6 +6405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c3dc32061c41eba56791c24543504c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiChannel: {fileID: 11400000, guid: a62dfb7156e89b142ab31be25a7b316e, type: 2}
+  defaultSprite: {fileID: 21300000, guid: eb7df580f9eaa9140b7130b8771e4e63, type: 3}
 --- !u!1 &1699906862
 GameObject:
   m_ObjectHideFlags: 0
