@@ -1,32 +1,55 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using _1.Script.EntityScript.Entities;
+using _2.So._1.Scripts;
+using _2.So._1.Scripts.EventChannels;
 using UnityEngine;
 
 namespace _1.Script.UI.UnitDataUI.EntityDataUIs.MultiData
 {
     public class MultiDataUIManager : MonoBehaviour
     {
-        private EntityDataUI[] entityDataUIs;
+        [SerializeField] private EventChannel uiChannel;
+        [SerializeField] private Sprite defaultSprite;
+        private EntityDataUI[] _entityDataUIs;
+        
         private void Awake()
         {
-            entityDataUIs = GetComponentsInChildren<EntityDataUI>();
-            
-            
+            _entityDataUIs = GetComponentsInChildren<EntityDataUI>();
+            foreach (EntityDataUI entityDataUI in _entityDataUIs)
+            {
+                entityDataUI.SetDefaultSprite(defaultSprite);
+                entityDataUI.OnEntityDataUIClick += HandleDataUIClick;
+            }
+                
+        }
+
+        private void OnDestroy()
+        {
+            foreach (EntityDataUI entityDataUI in _entityDataUIs)
+            {
+                entityDataUI.OnEntityDataUIClick -= HandleDataUIClick;
+            }
+        }
+
+        private void HandleDataUIClick(Entity page)
+        {
+            uiChannel.RaiseEvent(UIEvents.EntitySelection.Init(new List<Entity> {page}));
         }
 
         public void SetData(List<Entity> data)
         {
-            for (int i = 0; i < entityDataUIs.Length; i++)
+            for (int i = 0; i < _entityDataUIs.Length; i++)
             {
                 if (data.Count <= i)
                 {
-                    entityDataUIs[i].Off();
+                    _entityDataUIs[i].Off();
                 }
                 else
                 {
-                    entityDataUIs[i].SetData(data[i]);
-                    entityDataUIs[i].On();
+                    _entityDataUIs[i].SetData(data[i]);
+                    _entityDataUIs[i].On();
                 }
             }
         }

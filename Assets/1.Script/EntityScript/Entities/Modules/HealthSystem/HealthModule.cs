@@ -15,7 +15,7 @@ namespace _1.Script.EntityScript.Entities.Modules.HealthSystem
         private Entity _entity;
         [SerializeField] private float hp;
         private StatSO _maxHpStat;
-
+        public float MaxHp => _maxHpStat.Value;
         public bool IsDead { get; private set; }  = false;
 
         public float Hp

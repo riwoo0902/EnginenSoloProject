@@ -34,7 +34,6 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs.MultiData
 
         private void OnPointerClick()
         {
-            Debug.Log("Button Click");
             OnPageButtonClick?.Invoke(ShowPage);
         }
     }
