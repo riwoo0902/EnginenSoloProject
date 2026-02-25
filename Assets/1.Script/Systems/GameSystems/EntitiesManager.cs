@@ -30,8 +30,9 @@ namespace _1.Script.Systems.GameSystems
             entities.Remove(evt.entity);
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
             entityChannel.RemoveListener<EntitySpawnEvent>(AddEntityList);  
             entityChannel.AddListener<EntityDestroyEvent>(RemoveEntityList);  
         }

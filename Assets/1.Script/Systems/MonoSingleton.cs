@@ -26,7 +26,7 @@ namespace _1.Script.Systems
             if(Instance != this) Destroy(gameObject);
         }
 
-        protected virtual void OnDisable()
+        protected virtual void OnDestroy()
         {
             _instance = null;
         }

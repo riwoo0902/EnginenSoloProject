@@ -58,8 +58,9 @@ namespace _1.Script.EntityScript.EntityPointScript
             return entityPoint;
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
             entityChannel.RemoveListener<EntitySpawnEvent>(AddEntityPoint);
             entityChannel.RemoveListener<EntityDestroyEvent>(RemoveEntityPoint);
         }

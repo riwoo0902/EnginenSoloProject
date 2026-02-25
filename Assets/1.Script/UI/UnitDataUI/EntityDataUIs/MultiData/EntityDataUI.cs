@@ -40,7 +40,10 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs.MultiData
                 _healthModule.OnHealthChange += HealthModuleOnOnHealthChange;
                 _image.color = new Color(Math.Clamp(_healthModule.MaxHp/_healthModule.Hp-1,0,1),Math.Clamp(_healthModule.Hp/_healthModule.MaxHp * 2,0,1), 0, 1);
             }
-            
+            else
+            {
+                _image.color = new  Color(1, 1, 1, 1);
+            }
             VisualModule visualModule = _entity.GetModule<VisualModule>();
 
             _image.sprite = (visualModule != null && visualModule.EntityIcon != null) ? visualModule.EntityIcon : _defaultSprite;

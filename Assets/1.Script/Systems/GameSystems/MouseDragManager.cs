@@ -39,8 +39,9 @@ namespace _1.Script.Systems.GameSystems
         
         
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
             inputSo.OnMouseLeftPressed -= DragStart;
             inputSo.OnMouseLeftReleased -= DragEnd;
         }
@@ -86,6 +87,12 @@ namespace _1.Script.Systems.GameSystems
         public Vector2 endPos;
         public Vector2 minVec;
         public Vector2 maxVec;
+
+        public void MoveDragPos(Vector2 pos)
+        {
+            startPos += pos;
+            endPos += pos;
+        }
     }
     
 }
