@@ -75,8 +75,13 @@ namespace _10.InputSystem
         {
             isShiftPressed = context.ReadValueAsButton();
         }
-        
-        
-        
+
+        private event Action<Vector2> OnChangedCameraMoveDir;
+        public Vector2 CameraMoveDir { get; private set; }
+        public void OnCameraMove(InputAction.CallbackContext context)
+        {
+            CameraMoveDir = context.ReadValue<Vector2>();
+            OnChangedCameraMoveDir?.Invoke(CameraMoveDir);
+        }
     }
 }

@@ -29,8 +29,9 @@ namespace _1.Script.Systems.GameSystems
             uiChannel.AddListener<MouseDragEndEvent>(DragEnd);
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
             uiChannel.RemoveListener<MouseDragEndEvent>(DragEnd);
             
         }

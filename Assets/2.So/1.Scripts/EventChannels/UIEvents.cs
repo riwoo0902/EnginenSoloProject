@@ -10,8 +10,7 @@ namespace _2.So._1.Scripts.EventChannels
         public static readonly MouseDragEvent MouseDrag =  new MouseDragEvent();
         public static readonly MouseDragEndEvent MouseDragEnd =  new MouseDragEndEvent();
         public static readonly EntitySelectionEvent EntitySelection =  new EntitySelectionEvent();
-        public static readonly DataPageChangeEvent DataPageChange =  new DataPageChangeEvent();
-        
+        public static readonly CameraMoveEvent CameraMove =  new CameraMoveEvent();
         
     }
 
@@ -50,13 +49,13 @@ namespace _2.So._1.Scripts.EventChannels
         }
     }
     
-    public class DataPageChangeEvent : GameEvent
+    public class CameraMoveEvent : GameEvent
     {
-        public int pageIndex;
+        public Vector2 moveVector;
         
-        public DataPageChangeEvent Init(int index)
+        public CameraMoveEvent Init(Vector2 moveVec)
         {
-            pageIndex = index;
+            moveVector = moveVec;
             return this;
         }
     }
