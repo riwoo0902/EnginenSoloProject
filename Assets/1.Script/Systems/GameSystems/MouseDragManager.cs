@@ -22,15 +22,25 @@ namespace _1.Script.Systems.GameSystems
             base.Awake();
             inputSo.OnMouseLeftPressed += DragStart;
             inputSo.OnMouseLeftReleased += DragEnd;
+            uiChannel.AddListener<CameraMoveEvent>(CameraMove);
+        }
+
+        private void CameraMove(CameraMoveEvent evt)
+        {
+            DragData.MoveDragPos(-evt.moveVector);
         }
 
         private void Update()
         {
-            canDrag = !EventSystem.current.IsPointerOverGameObject();
-            
-            if (DragData.isDrag)
+            canDrag = !EventSystem.current.IsPointerOverGameObject() && inputSo.CameraMoveDir == Vector2.zero;
+            if (DragData.isDrag && canDrag)
             {
                 DragData.endPos = inputSo.mouseUIPosition;
+                uiChannel.RaiseEvent(UIEvents.MouseDrag.Init(SettingAndSendDragData()));
+            }
+            else if(canDrag == false)
+            {
+                DragData.isDrag = false;
                 uiChannel.RaiseEvent(UIEvents.MouseDrag.Init(SettingAndSendDragData()));
             }
             
@@ -59,7 +69,7 @@ namespace _1.Script.Systems.GameSystems
         
         private void DragEnd()
         {
-            if (DragData.isDrag)
+            if (DragData.isDrag && canDrag)
             {
                 DragData.isDrag = false;
                 DragData.endPos = inputSo.mouseUIPosition;
