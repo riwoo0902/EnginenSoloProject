@@ -1,7 +1,28 @@
+using _1.Script.EntityScript.Entities.Modules.MoveSystem;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
 namespace _1.Script.EntityScript.Entities.Unit.Units
 {
     public abstract class MoveUnit : Unit
     {
+        protected IMoveModule moveModule;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            moveModule = GetModule<IMoveModule>();
+        }
+
+        private void Update()
+        {
+            if (Keyboard.current.wKey.isPressed)
+            {
+                if(moveModule != null) moveModule.MoveToTarget(transform.position + new Vector3(10,0,0));   
+            }
+        }
+        
+        
         
     }
 }
