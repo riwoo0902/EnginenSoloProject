@@ -8,9 +8,8 @@ namespace _1.Script.EntityScript.EntityPointScript
     {
         [SerializeField] private Entity entityTarget;
         public bool IsHaveTarget => entityTarget != null;
-        private Vector3 _pos;
         private const float PlusSize = 1.2f;
-
+        private const float YPosition = 0.55f;
         private void Awake()
         {
             
@@ -20,8 +19,8 @@ namespace _1.Script.EntityScript.EntityPointScript
         {
             if(!IsHaveTarget) return;
             
-            Vector3 position = entityTarget.transform.position+ _pos;
-            position.y = 0.55f;
+            Vector3 position = entityTarget.transform.position;
+            position.y = YPosition;
             transform.position = position;
         }
 
