@@ -35,6 +35,12 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs.MultiData
 
         private void HandleDataUIClick(Entity page)
         {
+            foreach (EntityDataUI dataUI in _entityDataUIs)
+            {
+                if(dataUI.Entity == null ||dataUI.Entity == page) continue;
+                
+                dataUI.Entity.SelectEntity(false);
+            }
             uiChannel.RaiseEvent(UIEvents.EntitySelection.Init(new List<Entity> {page}));
         }
 

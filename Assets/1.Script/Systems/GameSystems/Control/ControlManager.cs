@@ -19,7 +19,7 @@ namespace _1.Script.Systems.GameSystems.Control
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private ControlTable controlTable;
         private Camera _camera;
-
+        private EventSystem _eventSystem;
         public AbstractControlSo currentControl;
         
         private readonly List<IControlListenerModule> _controlListenerModules = new();
@@ -27,6 +27,8 @@ namespace _1.Script.Systems.GameSystems.Control
         private void Awake()
         {
             _camera = Camera.main;
+            _eventSystem = EventSystem.current;
+            
             inputSo.OnMouseRightPressed += InvokeControl;
             uiChannel.AddListener<EntitySelectionEvent>(ControlListenerInput);
         }
@@ -54,7 +56,7 @@ namespace _1.Script.Systems.GameSystems.Control
         
         private void InvokeControl()
         {
-            if(EventSystem.current.IsPointerOverGameObject() || currentControl.ControlType == ControlType.Now) return;
+            if(_eventSystem.IsPointerOverGameObject() || currentControl.ControlType == ControlType.Now) return;
             
             Ray ray = _camera.ScreenPointToRay(inputSo.mouseUIPosition);
             RaycastHit hit;

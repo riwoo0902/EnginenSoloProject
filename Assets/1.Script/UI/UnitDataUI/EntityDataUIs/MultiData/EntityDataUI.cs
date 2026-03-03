@@ -13,7 +13,7 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs.MultiData
         public delegate void EntityDataUIClick(Entity page);
         public event EntityDataUIClick OnEntityDataUIClick;
         
-        private Entity _entity;
+        public Entity Entity { get; private set; }
         private HealthModule _healthModule;
         private Image _image;
         
@@ -33,8 +33,8 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs.MultiData
         public void SetData(Entity entity)
         {
             if(_healthModule != null)_healthModule.OnHealthChange -= HealthModuleOnOnHealthChange;
-            _entity = entity;
-            _healthModule = _entity.GetModule<HealthModule>();
+            Entity = entity;
+            _healthModule = Entity.GetModule<HealthModule>();
             if (_healthModule != null)
             {
                 _healthModule.OnHealthChange += HealthModuleOnOnHealthChange;
@@ -44,7 +44,7 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs.MultiData
             {
                 _image.color = new  Color(1, 1, 1, 1);
             }
-            VisualModule visualModule = _entity.GetModule<VisualModule>();
+            VisualModule visualModule = Entity.GetModule<VisualModule>();
 
             _image.sprite = (visualModule != null && visualModule.EntityIcon != null) ? visualModule.EntityIcon : _defaultSprite;
 
@@ -72,7 +72,7 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs.MultiData
         public override void OnPointerEnter(PointerEventData eventData) { }
         public override void OnPointerClick(PointerEventData eventData)
         {
-            OnEntityDataUIClick?.Invoke(_entity);
+            OnEntityDataUIClick?.Invoke(Entity);
         }
     }
 }
