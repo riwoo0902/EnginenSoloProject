@@ -282,6 +282,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cb0faa8e25461a9f30728262c6df52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &72452720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 72452721}
+  - component: {fileID: 72452722}
+  m_Layer: 0
+  m_Name: ControlManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &72452721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72452720}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1814822496}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &72452722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72452720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76604a91995a43c7b7ef5b8172bac678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiChannel: {fileID: 11400000, guid: a62dfb7156e89b142ab31be25a7b316e, type: 2}
+  inputSo: {fileID: 11400000, guid: 7d7e13395516f6248a026ffc1588525f, type: 2}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  controlTable: {fileID: 11400000, guid: 90c234483952d864192d8e12d0deae66, type: 2}
+  currentControl: {fileID: 11400000, guid: 7219720eba7dbcf4f83519dd661da2f8, type: 2}
 --- !u!1 &78457581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3082,7 +3133,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -6864,6 +6915,7 @@ Transform:
   - {fileID: 150910589}
   - {fileID: 1475566886}
   - {fileID: 1711352942}
+  - {fileID: 72452721}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1821828117
@@ -7806,7 +7858,7 @@ GameObject:
   - component: {fileID: 2080893286}
   - component: {fileID: 2080893285}
   - component: {fileID: 2080893289}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}

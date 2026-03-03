@@ -32,15 +32,11 @@ namespace _1.Script.Systems.GameSystems
 
         private void Update()
         {
-            canDrag = !EventSystem.current.IsPointerOverGameObject() && inputSo.CameraMoveDir == Vector2.zero;
+            if(DragData.isDrag == false) canDrag = !EventSystem.current.IsPointerOverGameObject() && inputSo.CameraMoveDir == Vector2.zero;
+            
             if (DragData.isDrag && canDrag)
             {
                 DragData.endPos = inputSo.mouseUIPosition;
-                uiChannel.RaiseEvent(UIEvents.MouseDrag.Init(SettingAndSendDragData()));
-            }
-            else if(canDrag == false)
-            {
-                DragData.isDrag = false;
                 uiChannel.RaiseEvent(UIEvents.MouseDrag.Init(SettingAndSendDragData()));
             }
             

@@ -16,7 +16,7 @@ namespace _1.Script.EntityScript.Entities.Unit.Units
 
         private void Update()
         {
-            if (Keyboard.current.wKey.isPressed)
+            if (Keyboard.current.wKey.wasPressedThisFrame)
             {
                 if(moveModule != null) moveModule.MoveToTarget(transform.position + new Vector3(10,0,0));   
             }
