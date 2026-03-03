@@ -6,7 +6,7 @@ namespace _1.Script.EntityScript.Entities.Modules.MoveSystem
 {
     public interface IMoveModule
     {
-        void MoveToTarget(Vector2 target);
+        void MoveToTarget(Vector3 target);
         void SetSpeed(float speed);
     }
 
@@ -23,7 +23,7 @@ namespace _1.Script.EntityScript.Entities.Modules.MoveSystem
         }
 
 
-        public void MoveToTarget(Vector2 target)
+        public void MoveToTarget(Vector3 target)
         {
             _navMeshAgent.SetDestination(target);
         }
