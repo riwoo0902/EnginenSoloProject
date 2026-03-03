@@ -10,12 +10,17 @@ namespace _1.Script.EntityScript.EntityPointScript
         public bool IsHaveTarget => entityTarget != null;
         private const float PlusSize = 1.2f;
         private const float YPosition = 0.55f;
-        private void Awake()
-        {
-            
-        }
 
         private void FixedUpdate()
+        {
+            if(!IsHaveTarget) return;
+            
+            Vector3 position = entityTarget.transform.position;
+            position.y = YPosition;
+            transform.position = position;
+        }
+
+        private void Update()
         {
             if(!IsHaveTarget) return;
             

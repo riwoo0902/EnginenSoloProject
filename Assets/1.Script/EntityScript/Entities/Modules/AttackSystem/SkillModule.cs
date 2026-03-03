@@ -6,8 +6,6 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem
 {
     public class SkillModule : MonoBehaviour,IModule
     {
-        private StatSO _attackRangeStat;
-        
         private Entity _entity;
         
         public void Initialize(ModuleOwner owner)
@@ -16,11 +14,9 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem
             
             Debug.Assert(_entity != null,"Entity is not found");
             
-            IStatModule statModule = _entity.GetModule<IStatModule>();
-            Debug.Assert(statModule != null,"StatModule is not found");
             
             
-            Debug.Assert(_entity != null,"Entity is not found");
+            
         }
         
         
