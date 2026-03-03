@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c110e77b84024a7a95464719275cdd41, type: 3}
+  m_Name: FSM state manager
+  m_EditorClassIdentifier: 
+  enumName: StateType
+  states:
+  - {fileID: 11400000, guid: b2b400f65a94ac94d9d7699b5169d636, type: 2}
+  - {fileID: 11400000, guid: 25e0dd083480157408c2d12a42382654, type: 2}
+  - {fileID: 11400000, guid: 834115da60b8fcd4daa96ef726983438, type: 2}

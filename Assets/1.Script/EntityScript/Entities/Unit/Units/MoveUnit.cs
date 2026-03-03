@@ -14,8 +14,9 @@ namespace _1.Script.EntityScript.Entities.Unit.Units
             moveModule = GetModule<IMoveModule>();
         }
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
             if (Keyboard.current.wKey.wasPressedThisFrame)
             {
                 if(moveModule != null) moveModule.MoveToTarget(transform.position + new Vector3(10,0,0));   
