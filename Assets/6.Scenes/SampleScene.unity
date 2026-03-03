@@ -326,10 +326,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76604a91995a43c7b7ef5b8172bac678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiChannel: {fileID: 11400000, guid: a62dfb7156e89b142ab31be25a7b316e, type: 2}
   inputSo: {fileID: 11400000, guid: 7d7e13395516f6248a026ffc1588525f, type: 2}
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+  controlTable: {fileID: 11400000, guid: 90c234483952d864192d8e12d0deae66, type: 2}
+  currentControl: {fileID: 11400000, guid: 7219720eba7dbcf4f83519dd661da2f8, type: 2}
 --- !u!1 &78457581
 GameObject:
   m_ObjectHideFlags: 0

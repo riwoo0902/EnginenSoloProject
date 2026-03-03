@@ -1,6 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using _1.Script.EntityScript.Entities;
+using _1.Script.EntityScript.Entities.Modules.ControlListenerSystem;
 using _10.InputSystem;
 using _2.So._1.Scripts;
+using _2.So._1.Scripts.ControlData;
 using _2.So._1.Scripts.EventChannels;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,47 +17,56 @@ namespace _1.Script.Systems.GameSystems.Control
         [SerializeField] private EventChannel uiChannel;
         [SerializeField] private InputSO inputSo;
         [SerializeField] private LayerMask groundLayer;
+        [SerializeField] private ControlTable controlTable;
         private Camera _camera;
+
+        public AbstractControlSo currentControl;
         
-        public Action<Vector3> onControl;
-        
-        
+        private readonly List<IControlListenerModule> _controlListenerModules = new();
         
         private void Awake()
         {
             _camera = Camera.main;
             inputSo.OnMouseRightPressed += InvokeControl;
-            uiChannel.AddListener<EntitySelectionEvent>(ControlSend);
+            uiChannel.AddListener<EntitySelectionEvent>(ControlListenerInput);
         }
         
         private void OnDestroy()
         {
             inputSo.OnMouseRightPressed -= InvokeControl;
-            uiChannel.RemoveListener<EntitySelectionEvent>(ControlSend);
+            uiChannel.RemoveListener<EntitySelectionEvent>(ControlListenerInput);
         }
 
-        private void ControlSend(EntitySelectionEvent evt)
+        private void ControlListenerInput(EntitySelectionEvent evt)
         {
-            
+            _controlListenerModules.Clear();
+
+            foreach (Entity entity in evt.entities)
+            {
+                IControlListenerModule controlListenerModule = entity.GetModule<IControlListenerModule>();
+                if (controlListenerModule != null)
+                {
+                    _controlListenerModules.Add(controlListenerModule);
+                }
+            }
+
         }
         
         private void InvokeControl()
         {
-            if(EventSystem.current.IsPointerOverGameObject()) return;
+            if(EventSystem.current.IsPointerOverGameObject() || currentControl.ControlType == ControlType.Now) return;
             
             Ray ray = _camera.ScreenPointToRay(inputSo.mouseUIPosition);
             RaycastHit hit;
             if (Physics.Raycast(ray,out hit,100,groundLayer))
             {
-                Control(hit.point);
+                foreach (IControlListenerModule controlListenerModule in _controlListenerModules)
+                {
+                    controlListenerModule.Control(currentControl,hit.point);
+                }
             }
         }
         
-        private void Control(Vector3 vec)
-        {
-            Debug.Log(vec);
-            onControl?.Invoke(vec);
-        }
         
         
     }
