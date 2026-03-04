@@ -24,6 +24,7 @@ namespace _1.Script.Systems.GameSystems.Control
         
         private readonly List<IControlListenerModule> _controlListenerModules = new();
         
+        private bool _isPointerOverGameObject = false;
         private void Awake()
         {
             _camera = Camera.main;
@@ -32,7 +33,12 @@ namespace _1.Script.Systems.GameSystems.Control
             inputSo.OnMouseRightPressed += InvokeControl;
             uiChannel.AddListener<EntitySelectionEvent>(ControlListenerInput);
         }
-        
+
+        private void Update()
+        {
+            _isPointerOverGameObject = _eventSystem.IsPointerOverGameObject();
+        }
+
         private void OnDestroy()
         {
             inputSo.OnMouseRightPressed -= InvokeControl;
@@ -56,7 +62,7 @@ namespace _1.Script.Systems.GameSystems.Control
         
         private void InvokeControl()
         {
-            if(_eventSystem.IsPointerOverGameObject() || currentControl.ControlType == ControlType.Now) return;
+            if(_isPointerOverGameObject || currentControl.ControlType == ControlType.Now) return;
             
             Ray ray = _camera.ScreenPointToRay(inputSo.mouseUIPosition);
             RaycastHit hit;
