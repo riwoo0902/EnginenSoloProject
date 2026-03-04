@@ -19,7 +19,7 @@ namespace _1.Script.EntityScript.Entities.FSM
                 Type type = Type.GetType(state.className); //해당 클래스 이름을 기반으로 타입정보를 가져온다.
                 Debug.Assert(type != null, $"State class not found: {state.className}");
                 
-                AbstractState abstractState = Activator.CreateInstance(type, owner) as AbstractState;
+                AbstractState abstractState = Activator.CreateInstance(type, new object[]{owner}) as AbstractState;
                 
                 _stateDict.Add(state.stateIndex, abstractState);
             }

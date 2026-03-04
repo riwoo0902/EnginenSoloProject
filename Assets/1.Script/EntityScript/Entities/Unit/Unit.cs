@@ -17,9 +17,13 @@ namespace _1.Script.EntityScript.Entities.Unit
             base.Awake();
             statModule = GetModule<IStatModule>();
             
-            _stateMachine =  new StateMachine(this,stateListSo.states);
-            
-            //_stateMachine.ChangeState(PlayerStateEnum.);
+            _stateMachine = new StateMachine(this,stateListSo.states);
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+            _stateMachine.ChangeState((int)StateType.Stop);
         }
 
 

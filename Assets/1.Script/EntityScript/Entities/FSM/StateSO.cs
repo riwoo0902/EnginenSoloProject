@@ -8,5 +8,11 @@ namespace _1.Script.EntityScript.Entities.FSM
         public string stateName;
         public string className;
         public int stateIndex;
+
+        [ContextMenu("Debug ClassName")]
+        public void DebugClassName()
+        {
+            Debug.Log(className);
+        }
     }
 }
