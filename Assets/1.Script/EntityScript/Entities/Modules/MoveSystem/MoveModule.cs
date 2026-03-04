@@ -9,7 +9,7 @@ namespace _1.Script.EntityScript.Entities.Modules.MoveSystem
     public interface IMoveModule
     {
         void MoveToTarget(Vector3 target);
-        void SetSpeed(float speed);
+        public void MoveStop(bool stop);
     }
 
     public class MoveModule : MonoBehaviour, IModule, IMoveModule
@@ -40,15 +40,19 @@ namespace _1.Script.EntityScript.Entities.Modules.MoveSystem
         {
             SetSpeed(value);
         }
+        private void SetSpeed(float speed)
+        {
+            _navMeshAgent.speed = speed;
+        }
 
         public void MoveToTarget(Vector3 target)
         {
             _navMeshAgent.SetDestination(target);
         }
 
-        public void SetSpeed(float speed)
+        public void MoveStop(bool stop)
         {
-            _navMeshAgent.speed = speed;
+            _navMeshAgent.isStopped = stop;
         }
         
         
