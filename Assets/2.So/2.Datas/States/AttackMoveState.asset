@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AttackMoveState
   m_EditorClassIdentifier: 
   stateName: AttackMove
-  className: _1.Script.EntityScript.Entities.FSM.States.AttackMove
+  className: _1.Script.EntityScript.Entities.FSM.States.AttackMoveState
   stateIndex: 2
