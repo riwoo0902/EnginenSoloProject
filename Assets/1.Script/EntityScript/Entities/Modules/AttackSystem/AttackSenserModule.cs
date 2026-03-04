@@ -7,15 +7,18 @@ using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities.Modules.AttackSystem
 {
-    public class AttackSenserModule : MonoBehaviour,IModule
+    public interface IAttackSenserModule
+    {
+        bool TryGetTarget(out Entity target);
+    }
+
+    public class AttackSenserModule : MonoBehaviour,IModule, IAttackSenserModule
     {
         private StatSO _attackRangeStat;
         
         private Entity _entity;
         
         private List<Entity> _entities;
-        
-        private Entity _entityTarget;
         
         public void Initialize(ModuleOwner owner)
         {
@@ -30,12 +33,6 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem
             _entities = EntitiesManager.Instance.entities;
         }
 
-        private void FixedUpdate()
-        {
-            TryGetTarget(out _entityTarget);
-        }
-
-
         public bool TryGetTarget(out Entity target)
         {
             target = null;
@@ -44,11 +41,17 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem
             
             foreach (Entity entity in _entities)
             {
-                float distance = (entity.transform.position - _entity.transform.position).sqrMagnitude;
+                if(!TeamCheck.IsEnemy(_entity.myTeam, entity.myTeam)) continue;
+                Vector3 vec = entity.transform.position - _entity.transform.position;
+                float distance = vec.magnitude;
                 if (distance < _attackRangeStat.Value && distance < minDistance)
                 {
-                    _entityTarget = entity;
-                    minDistance = distance;
+                    if (!Physics.Raycast(_entity.transform.position,vec,LayerMask.NameToLayer("Map")))
+                    {
+                        target = entity;
+                        minDistance = distance;
+                    }
+                    
                 }
             }
             

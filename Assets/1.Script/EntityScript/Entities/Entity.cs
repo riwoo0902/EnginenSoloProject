@@ -11,6 +11,8 @@ namespace _1.Script.EntityScript.Entities
         [SerializeField] private EventChannel entityChannel;
         
         public event Action<bool> Selection;
+
+        public Team myTeam;
         
         protected override void Awake()
         {
@@ -32,7 +34,9 @@ namespace _1.Script.EntityScript.Entities
         {
             Selection?.Invoke(select);
         }
+
         
+
 
     }
 }
