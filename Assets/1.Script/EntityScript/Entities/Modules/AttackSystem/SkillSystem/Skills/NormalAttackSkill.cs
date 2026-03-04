@@ -31,6 +31,8 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skill
         public override void UseSkill()
         {
             _lastAttackTime = Time.time;
+            
+            
         }
         
         

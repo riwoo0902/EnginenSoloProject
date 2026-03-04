@@ -31,5 +31,10 @@ namespace _1.Script.EntityScript.Entities.Unit
         {
             _stateMachine.UpdateMachine();
         }
+
+        public void ChangeState(StateType type)
+        {
+            _stateMachine.ChangeState((int)type);
+        }
     }
 }
