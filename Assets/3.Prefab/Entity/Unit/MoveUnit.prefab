@@ -174,13 +174,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6865011878609646865, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
       propertyPath: m_Name
-      value: MoveUnit Variant
+      value: MoveUnit
       objectReference: {fileID: 0}
     - target: {fileID: 8053405764225135796, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 06bf9c471d6ecc4418fee4741a135b84, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5076926732214632264, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3062271840839442739, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
@@ -191,6 +192,9 @@ PrefabInstance:
       addedObject: {fileID: 9119143788563455753}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6865011878609646865, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 7013937402612128077}
+    - targetCorrespondingSourceObject: {fileID: 6865011878609646865, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2484489718961265142}
   m_SourcePrefab: {fileID: 100100000, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
@@ -199,6 +203,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6865011878609646865, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
   m_PrefabInstance: {fileID: 5911863980875067635}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7013937402612128077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958777548536366562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f085dcb5bbc4448b38f1410de3cb412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityChannel: {fileID: 11400000, guid: 7208b52188c81b540966ddc6d7592cff, type: 2}
+  stateListSo: {fileID: 11400000, guid: ba2e2ae321b06534a96fe1785322bc44, type: 2}
 --- !u!195 &2484489718961265142
 NavMeshAgent:
   m_ObjectHideFlags: 0

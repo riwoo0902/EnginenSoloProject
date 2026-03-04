@@ -37,10 +37,15 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs.MultiData
         {
             foreach (EntityDataUI dataUI in _entityDataUIs)
             {
-                if(dataUI.Entity == null ||dataUI.Entity == page) continue;
-                
+                if(dataUI.Entity == null) continue;
                 dataUI.Entity.SelectEntity(false);
             }
+
+            foreach (Entity entity in UIEvents.EntitySelection.entities)
+            {
+                entity.SelectEntity(entity == page);
+            }
+            
             uiChannel.RaiseEvent(UIEvents.EntitySelection.Init(new List<Entity> {page}));
         }
 
