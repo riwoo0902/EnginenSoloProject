@@ -46,5 +46,24 @@ namespace _1.Script.EntityScript.ModuleSystem
             }
             return default;
         }
+        
+        public bool TryGetModule<T>(out T module)
+        {
+            if (_moduleDict.TryGetValue(typeof(T), out IModule module2))
+            {
+                module = (T)module2;
+                return true;
+            }
+            
+            IModule findModule = _moduleDict.Values.FirstOrDefault(moduleType => moduleType is T);
+            if(findModule is T castedModule)
+            {
+                module = castedModule;
+                return true;
+            }
+            module = default;
+            return false;
+        }
+        
     }
 }

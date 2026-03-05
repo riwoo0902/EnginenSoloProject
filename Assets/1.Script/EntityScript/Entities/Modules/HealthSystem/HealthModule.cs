@@ -1,11 +1,12 @@
 using System;
+using _1.Script.EntityScript.Entities.Modules.AttackSystem.AttackCaster;
 using _1.Script.EntityScript.Entities.Modules.StatSystem;
 using _1.Script.EntityScript.ModuleSystem;
 using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities.Modules.HealthSystem
 {
-    public class HealthModule : MonoBehaviour , IModule
+    public class HealthModule : MonoBehaviour , IModule , ICanUseColliderManager
     {
         public delegate void HealthChange(float before, float current, float max);
         public event HealthChange OnHealthChange;
