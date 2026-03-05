@@ -18,8 +18,10 @@ namespace _1.Script.Systems.GameSystems.Control
         [SerializeField] private InputSO inputSo;
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private ControlTable controlTable;
+        
         private Camera _camera;
         private EventSystem _eventSystem;
+        
         public AbstractControlSo currentControl;
         
         private readonly List<IControlListenerModule> _controlListenerModules = new();
@@ -72,6 +74,7 @@ namespace _1.Script.Systems.GameSystems.Control
                 {
                     controlListenerModule.Control(currentControl,hit.point);
                 }
+                uiChannel.RaiseEvent(UIEvents.SetPointer.Init(hit.point.ChangeToVector2()));
             }
         }
         

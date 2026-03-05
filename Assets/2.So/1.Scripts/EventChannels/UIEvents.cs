@@ -11,6 +11,7 @@ namespace _2.So._1.Scripts.EventChannels
         public static readonly MouseDragEndEvent MouseDragEnd =  new MouseDragEndEvent();
         public static readonly EntitySelectionEvent EntitySelection =  new EntitySelectionEvent();
         public static readonly CameraMoveEvent CameraMove =  new CameraMoveEvent();
+        public static readonly SetPointerEvent SetPointer =  new SetPointerEvent();
         
     }
 
@@ -56,6 +57,17 @@ namespace _2.So._1.Scripts.EventChannels
         public CameraMoveEvent Init(Vector2 moveVec)
         {
             moveVector = moveVec;
+            return this;
+        }
+    }
+
+    public class SetPointerEvent : GameEvent
+    {
+        public Vector2 pointerPos;
+        
+        public SetPointerEvent Init(Vector2 pos)
+        {
+            pointerPos = pos;
             return this;
         }
     }
