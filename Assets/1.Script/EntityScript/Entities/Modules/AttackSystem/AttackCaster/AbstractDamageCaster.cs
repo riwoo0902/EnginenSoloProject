@@ -5,14 +5,15 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.AttackCaster
     public abstract class AbstractDamageCaster : MonoBehaviour
     {
         protected AttackData currentAttackData;
-
-        public void SetAttackData(AttackData data)
+        protected Team myTeam;
+        public void SetAttackData(Team team,AttackData data)
         {
+            myTeam = team;
             currentAttackData = data;
         }
 
         protected abstract bool CanAttack(Entity target);
-        protected abstract void Attack(Entity healthModule);
+        protected abstract void Attack(Entity target);
         
     }
 
