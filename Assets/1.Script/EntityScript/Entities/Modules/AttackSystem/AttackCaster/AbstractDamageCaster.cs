@@ -1,17 +1,18 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.AttackCaster
 {
-    public abstract class AbstractAttackCaster : MonoBehaviour
+    public abstract class AbstractDamageCaster : MonoBehaviour
     {
-        private AttackData _currentAttackData;
+        protected AttackData currentAttackData;
 
         public void SetAttackData(AttackData data)
         {
-            _currentAttackData = data;
+            currentAttackData = data;
         }
-        
+
+        protected abstract bool CanAttack(Entity target);
+        protected abstract void Attack(Entity healthModule);
         
     }
 
