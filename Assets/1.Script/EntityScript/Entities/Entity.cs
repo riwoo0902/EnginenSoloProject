@@ -18,6 +18,7 @@ namespace _1.Script.EntityScript.Entities
         protected override void Awake()
         {
             base.Awake();
+
             
         }
 
