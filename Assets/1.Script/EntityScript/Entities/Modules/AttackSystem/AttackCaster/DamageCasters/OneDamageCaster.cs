@@ -8,9 +8,11 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.AttackCaster.Dama
     public class OneDamageCaster : AbstractDamageCaster
     {
         private readonly List<Entity> _entities = new();
+        public bool canAttack = true;
         
         protected override bool CanAttack(Entity target)
         {
+            if(!canAttack) return false;
             if(TeamCheck.IsTeam(myTeam,target.myTeam)) return false;
             if(_entities.Contains(target)) return false;
             
@@ -37,5 +39,11 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.AttackCaster.Dama
                 }
             }
         }
+
+        public void ResetCanAttack()
+        {
+            _entities.Clear();
+        }
+        
     }
 }
