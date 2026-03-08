@@ -8,11 +8,11 @@ namespace _1.Script.EntityScript.Entities.FSM
     {
         public AbstractState CurrentState { get; private set; }
 
-        private Dictionary<int, AbstractState> _stateDict;
+        private Dictionary<StateType, AbstractState> _stateDict;
 
         public StateMachine(Entity owner, StateSO[] stateList)
         {
-            _stateDict = new Dictionary<int, AbstractState>();
+            _stateDict = new Dictionary<StateType, AbstractState>();
 
             foreach (StateSO state in stateList)
             {
@@ -21,18 +21,19 @@ namespace _1.Script.EntityScript.Entities.FSM
                 
                 AbstractState abstractState = Activator.CreateInstance(type, new object[]{owner}) as AbstractState;
                 
-                _stateDict.Add(state.stateIndex, abstractState);
+                _stateDict.Add((StateType)state.stateIndex, abstractState);
             }
         }
 
-        public void ChangeState(int nextStateIndex)
+        public void ChangeState(Vector3 point,StateType nextStateIndex)
         {
             CurrentState?.Exit();
+            
             AbstractState nextState = _stateDict.GetValueOrDefault(nextStateIndex);
             Debug.Assert(nextState != null, $"State not found: {nextStateIndex}");
             
             CurrentState = nextState;
-            CurrentState.Enter();
+            CurrentState.Enter(point);
         }
         
         public void UpdateMachine() => CurrentState?.Update();

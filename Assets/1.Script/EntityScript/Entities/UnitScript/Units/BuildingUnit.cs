@@ -1,4 +1,4 @@
-namespace _1.Script.EntityScript.Entities.Unit.Units
+namespace _1.Script.EntityScript.Entities.UnitScript.Units
 {
     public class BuildingUnit : Unit
     {

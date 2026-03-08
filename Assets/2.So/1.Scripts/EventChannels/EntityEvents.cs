@@ -1,4 +1,6 @@
 using _1.Script.EntityScript.Entities;
+using _1.Script.EntityScript.Entities.FSM;
+using UnityEngine;
 
 namespace _2.So._1.Scripts.EventChannels
 {
@@ -28,4 +30,6 @@ namespace _2.So._1.Scripts.EventChannels
             return this;
         }
     }
+
+    
 }

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using _1.Script.EntityScript.Entities;
+using _1.Script.EntityScript.Entities.FSM;
 using _1.Script.EntityScript.Entities.Modules.ControlListenerSystem;
 using _10.InputSystem;
 using _2.So._1.Scripts;
-using _2.So._1.Scripts.ControlData;
 using _2.So._1.Scripts.EventChannels;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,23 +15,25 @@ namespace _1.Script.Systems.GameSystems.Control
         [SerializeField] private EventChannel uiChannel;
         [SerializeField] private InputSO inputSo;
         [SerializeField] private LayerMask groundLayer;
-        [SerializeField] private ControlTable controlTable;
         
         private Camera _camera;
         private EventSystem _eventSystem;
         
-        public AbstractControlSo currentControl;
+        public StateType currentControl;
         
         private readonly List<IControlListenerModule> _controlListenerModules = new();
         
         private bool _isPointerOverGameObject = false;
+        
         private void Awake()
         {
             _camera = Camera.main;
             _eventSystem = EventSystem.current;
             
-            inputSo.OnMouseRightPressed += InvokeControl;
+            inputSo.OnMouseRightPressed += InvokeMouseControl;
             uiChannel.AddListener<EntitySelectionEvent>(ControlListenerInput);
+            uiChannel.AddListener<ChangeEntityControlEvent>(ChangeControlType);
+
         }
 
         private void Update()
@@ -41,8 +43,9 @@ namespace _1.Script.Systems.GameSystems.Control
 
         private void OnDestroy()
         {
-            inputSo.OnMouseRightPressed -= InvokeControl;
+            inputSo.OnMouseRightPressed -= InvokeMouseControl;
             uiChannel.RemoveListener<EntitySelectionEvent>(ControlListenerInput);
+            uiChannel.RemoveListener<ChangeEntityControlEvent>(ChangeControlType);
         }
 
         private void ControlListenerInput(EntitySelectionEvent evt)
@@ -51,29 +54,38 @@ namespace _1.Script.Systems.GameSystems.Control
 
             foreach (Entity entity in evt.entities)
             {
-                IControlListenerModule controlListenerModule = entity.GetModule<IControlListenerModule>();
-                if (controlListenerModule != null)
+                if (entity.TryGetModule(out IControlListenerModule controlListenerModule))
                 {
                     _controlListenerModules.Add(controlListenerModule);
                 }
             }
 
         }
-        
-        private void InvokeControl()
+
+        public void ChangeControlType(ChangeEntityControlEvent evt)
         {
-            if(_isPointerOverGameObject || currentControl.ControlType == ControlType.Now) return;
+            currentControl = evt.controlType;
+
+            if (currentControl == StateType.Stop)
+            {
+                _controlListenerModules.ForEach(listenerModule => listenerModule.Control(Vector3.zero, currentControl));
+            }
+            
+        }
+        
+        private void InvokeMouseControl()
+        {
+            if(_isPointerOverGameObject || currentControl == StateType.Stop) return;
             
             Ray ray = _camera.ScreenPointToRay(inputSo.mouseUIPosition);
             RaycastHit hit;
             if (Physics.Raycast(ray,out hit,100,groundLayer))
             {
-                foreach (IControlListenerModule controlListenerModule in _controlListenerModules)
-                {
-                    controlListenerModule.Control(currentControl,hit.point);
-                }
-                uiChannel.RaiseEvent(UIEvents.SetPointer.Init(hit.point.ChangeToVector2()));
+                _controlListenerModules.ForEach(listenerModule => listenerModule.Control(hit.point, currentControl));
+                uiChannel.RaiseEvent(UIEvents.SetPointer.Init(hit.point.ChangeToVector2(),currentControl));
+                return;
             }
+            
         }
         
         
