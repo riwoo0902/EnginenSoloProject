@@ -10,7 +10,8 @@ namespace _1.Script.EntityScript.Entities
     public class Entity : ModuleOwner
     {
         [SerializeField] private EventChannel entityChannel;
-        
+
+        public bool IsSelection { get; private set; } = false;
         public event Action<bool> Selection;
 
         public Team myTeam;
@@ -34,6 +35,7 @@ namespace _1.Script.EntityScript.Entities
 
         public void SelectEntity(bool select)
         {
+            IsSelection = select;
             Selection?.Invoke(select);
         }
         

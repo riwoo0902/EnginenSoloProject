@@ -2,7 +2,7 @@ using _1.Script.EntityScript.Entities.Modules.MoveSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace _1.Script.EntityScript.Entities.Unit.Units
+namespace _1.Script.EntityScript.Entities.UnitScript.Units
 {
     public class MoveUnit : Unit
     {

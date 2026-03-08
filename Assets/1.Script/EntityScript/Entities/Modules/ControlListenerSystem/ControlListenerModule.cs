@@ -1,32 +1,34 @@
 using System;
-using _1.Script.EntityScript.Entities.Modules.MoveSystem;
+using _1.Script.EntityScript.Entities.FSM;
+using _1.Script.EntityScript.Entities.UnitScript;
 using _1.Script.EntityScript.ModuleSystem;
-using _1.Script.Systems.GameSystems.Control;
-using _2.So._1.Scripts.ControlData;
+using _2.So._1.Scripts;
 using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities.Modules.ControlListenerSystem
 {
     public interface IControlListenerModule
     {
-        void Control(AbstractControlSo currentControl, Vector3 point);
+        public void Control(Vector3 point,StateType currentControl);
     }
     public class ControlListenerModule : MonoBehaviour,IModule,IControlListenerModule
     {
-        private Entity _entity;
-        private IMoveModule _moveModule;
+        private Unit _entity;
+        private StateMachine _stateMachine;
         public void Initialize(ModuleOwner owner)
         {
-            _entity = owner as Entity;
+            _entity = owner as Unit;
             Debug.Assert(_entity != null,"Module owner is not Entity");
-            
-            _moveModule = _entity.GetModule<IMoveModule>();
-            Debug.Assert(_moveModule != null,"MoveModule is not found");
         }
 
-        public void Control(AbstractControlSo currentControl, Vector3 point)
+        private void Start()
         {
-            currentControl.Control(_entity,_moveModule,point);
+            _stateMachine = _entity.StateMachine;
+        }
+
+        public void Control(Vector3 point,StateType currentControl)
+        {
+            _stateMachine.ChangeState(point,currentControl);
         }
         
     }
