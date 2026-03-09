@@ -1,10 +1,11 @@
+using _1.Script.EntityScript.Entities.UnitScript.Units;
 using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities.FSM.States
 {
     public class StopState : AbstractState
     {
-        public StopState(Entity owner) : base(owner)
+        public StopState(MoveUnit owner) : base(owner)
         {
             
         }
@@ -15,6 +16,11 @@ namespace _1.Script.EntityScript.Entities.FSM.States
         }
         
         public override void Update()
+        {
+            
+        }
+
+        public override void FixedUpdate()
         {
             
         }

@@ -20,5 +20,12 @@ namespace _1.Script.Test
         {
             uiChannel.RaiseEvent(UIEvents.ChangeEntityControl.Init(StateType.Move));
         }
+        
+        [ContextMenu("ChangeControlState_AttackMove")]
+        public void ChangeControlState_AttackMove()
+        {
+            uiChannel.RaiseEvent(UIEvents.ChangeEntityControl.Init(StateType.AttackMove));
+        }
+        
     }
 }

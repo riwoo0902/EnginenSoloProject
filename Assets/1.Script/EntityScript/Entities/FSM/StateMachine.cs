@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _1.Script.EntityScript.Entities.UnitScript.Units;
 using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities.FSM
@@ -10,7 +11,7 @@ namespace _1.Script.EntityScript.Entities.FSM
 
         private Dictionary<StateType, AbstractState> _stateDict;
 
-        public StateMachine(Entity owner, StateSO[] stateList)
+        public StateMachine(MoveUnit owner, StateSO[] stateList)
         {
             _stateDict = new Dictionary<StateType, AbstractState>();
 
@@ -37,5 +38,7 @@ namespace _1.Script.EntityScript.Entities.FSM
         }
         
         public void UpdateMachine() => CurrentState?.Update();
+        
+        public void FixedUpdateMachine() => CurrentState?.FixedUpdate();
     }
 }

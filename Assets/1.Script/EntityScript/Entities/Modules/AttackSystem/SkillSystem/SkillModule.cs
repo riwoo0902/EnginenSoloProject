@@ -19,12 +19,22 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem
             Debug.Assert(_entity != null,"Entity is not found");
             
             _skills = GetComponentsInChildren<AbstractSkill>().ToDictionary(skill => skill.GetType());
-            
+            foreach (AbstractSkill value in _skills.Values)
+            {
+                value.Initialize(_entity);
+            }
         }
 
-        public bool TryGetSkill(Type skillType,out AbstractSkill skillInstance)
+        public bool TryGetSkill<T>(out T skillInstance) where T : AbstractSkill
         {
-            return _skills.TryGetValue(skillType, out skillInstance);
+            if(_skills.TryGetValue(typeof(T), out AbstractSkill skill))
+            {
+                skillInstance = skill as T;
+                return true;
+            }
+
+            skillInstance = null;
+            return false;
         }
         
         

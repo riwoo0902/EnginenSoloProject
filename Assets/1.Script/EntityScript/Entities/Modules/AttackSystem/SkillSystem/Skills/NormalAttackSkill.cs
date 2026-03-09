@@ -11,9 +11,6 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skill
         {
             base.Initialize(owner);
             
-            IStatModule statModule = entity.GetModule<IStatModule>();
-            Debug.Assert(statModule != null, "StatModule is not found");
-            
             Debug.Assert(statModule.TryGetStat(Stats.AttackSpeed,out _attackSpeedStat),"AttackSpeed stat is not found");
             
         }
@@ -32,7 +29,7 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skill
         {
             _lastAttackTime = Time.time;
             
-            
+            Debug.Log("NormalAttack");
         }
         
         

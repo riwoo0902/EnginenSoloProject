@@ -15,13 +15,6 @@ namespace _1.Script.EntityScript.Entities
         public event Action<bool> Selection;
 
         public Team myTeam;
-        
-        protected override void Awake()
-        {
-            base.Awake();
-
-            
-        }
 
         protected virtual void Start()
         {
