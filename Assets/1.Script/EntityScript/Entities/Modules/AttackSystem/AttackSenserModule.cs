@@ -41,12 +41,12 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem
             
             foreach (Entity entity in _entities)
             {
-                if(!TeamCheck.IsEnemy(_entity.myTeam, entity.myTeam)) continue;
+                if(TeamCheck.IsTeam(_entity.myTeam, entity.myTeam)) continue;
                 Vector3 vec = entity.transform.position - _entity.transform.position;
                 float distance = vec.magnitude;
                 if (distance < _attackRangeStat.Value && distance < minDistance)
                 {
-                    if (!Physics.Raycast(_entity.transform.position,vec,LayerMask.NameToLayer("Map")))
+                    if (!Physics.Raycast(_entity.transform.position,vec.normalized,distance,LayerMask.NameToLayer("Map")))
                     {
                         target = entity;
                         minDistance = distance;

@@ -15,10 +15,6 @@ namespace _1.Script.EntityScript.Entities
             return team1 == team2;
         }
         
-        public static bool IsEnemy(Team team1, Team team2)
-        {
-            return (int)team1 + (int)team2 == 1;
-        }
     }
     
 }

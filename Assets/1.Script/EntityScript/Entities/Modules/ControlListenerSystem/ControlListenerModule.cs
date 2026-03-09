@@ -1,6 +1,7 @@
 using System;
 using _1.Script.EntityScript.Entities.FSM;
 using _1.Script.EntityScript.Entities.UnitScript;
+using _1.Script.EntityScript.Entities.UnitScript.Units;
 using _1.Script.EntityScript.ModuleSystem;
 using _2.So._1.Scripts;
 using UnityEngine;
@@ -13,17 +14,19 @@ namespace _1.Script.EntityScript.Entities.Modules.ControlListenerSystem
     }
     public class ControlListenerModule : MonoBehaviour,IModule,IControlListenerModule
     {
-        private Unit _entity;
+        private MoveUnit _moveUnit;
         private StateMachine _stateMachine;
         public void Initialize(ModuleOwner owner)
         {
-            _entity = owner as Unit;
-            Debug.Assert(_entity != null,"Module owner is not Entity");
+            _moveUnit = owner as MoveUnit;
+            Debug.Assert(_moveUnit != null,"Module owner is not MoveUnit");
+
+            
         }
 
         private void Start()
         {
-            _stateMachine = _entity.StateMachine;
+            _stateMachine = _moveUnit.StateMachine;
         }
 
         public void Control(Vector3 point,StateType currentControl)

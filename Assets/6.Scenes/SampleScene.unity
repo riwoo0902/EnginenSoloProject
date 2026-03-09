@@ -1587,6 +1587,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1659992583}
     m_Modifications:
+    - target: {fileID: 21505878998288893, guid: fe5bb85a38ed33044943b65b061d3e07, type: 3}
+      propertyPath: myTeam
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2398725773868324313, guid: fe5bb85a38ed33044943b65b061d3e07, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.3
@@ -2091,6 +2095,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1659992583}
     m_Modifications:
+    - target: {fileID: 21505878998288893, guid: fe5bb85a38ed33044943b65b061d3e07, type: 3}
+      propertyPath: myTeam
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2398725773868324313, guid: fe5bb85a38ed33044943b65b061d3e07, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.29
@@ -6352,6 +6360,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1659992583}
     m_Modifications:
+    - target: {fileID: 21505878998288893, guid: fe5bb85a38ed33044943b65b061d3e07, type: 3}
+      propertyPath: myTeam
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2398725773868324313, guid: fe5bb85a38ed33044943b65b061d3e07, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.2
@@ -8030,6 +8042,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1659992583}
     m_Modifications:
+    - target: {fileID: 21505878998288893, guid: fe5bb85a38ed33044943b65b061d3e07, type: 3}
+      propertyPath: myTeam
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2398725773868324313, guid: fe5bb85a38ed33044943b65b061d3e07, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.58
@@ -13576,6 +13592,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1659992583}
     m_Modifications:
+    - target: {fileID: 21505878998288893, guid: fe5bb85a38ed33044943b65b061d3e07, type: 3}
+      propertyPath: myTeam
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2398725773868324313, guid: fe5bb85a38ed33044943b65b061d3e07, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.5

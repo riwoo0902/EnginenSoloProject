@@ -1,4 +1,9 @@
 using _1.Script.EntityScript.Entities.Modules.AttackSystem;
+using _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem;
+using _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skills;
+using _1.Script.EntityScript.Entities.UnitScript;
+using _1.Script.EntityScript.Entities.UnitScript.Units;
+using _1.Script.EntityScript.Entities.UnitScript.Units.MoveUnits;
 using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities.FSM.States
@@ -6,10 +11,11 @@ namespace _1.Script.EntityScript.Entities.FSM.States
     public class AttackMoveState : AbstractState
     {
         private IAttackSenserModule _attackSenserModule;
-        public AttackMoveState(Entity owner) : base(owner)
+        private SkillModule _skillModule;
+        private bool _canAttackMove;
+        public AttackMoveState(MoveUnit owner) : base(owner)
         {
-            Debug.Assert(owner.TryGetModule(out _attackSenserModule),"AttackSenser is not found");
-            
+            _canAttackMove = owner.TryGetModule(out _attackSenserModule) && owner.TryGetModule(out _skillModule);
             
         }
 
@@ -18,6 +24,12 @@ namespace _1.Script.EntityScript.Entities.FSM.States
         {
             _targetPos = point;
             
+            if (!_canAttackMove)
+            {
+                moveUnit.StateMachine.ChangeState(point,StateType.Move);
+            }
+            
+            
         }
         
         public override void Update()
@@ -25,9 +37,27 @@ namespace _1.Script.EntityScript.Entities.FSM.States
             
         }
 
+        public override void FixedUpdate()
+        {
+            if (_attackSenserModule.TryGetTarget(out Entity target) &&
+                _skillModule.TryGetSkill(out NormalAttackSkill skill))
+            {
+                moveModule.MoveStop(true);
+                if (skill.CanUseSkill())
+                {
+                    skill.UseSkill();
+                }
+            }
+            else
+            {
+                moveModule.MoveStop(false);
+                moveModule.MoveToTarget(_targetPos);
+            }
+        }
+
         public override void Exit()
         {
-            
+            moveModule.MoveStop(false);
         }
     }
 }
