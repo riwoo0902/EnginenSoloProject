@@ -44,7 +44,7 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem
                 if(TeamCheck.IsTeam(_entity.myTeam, entity.myTeam)) continue;
                 Vector3 vec = entity.transform.position - _entity.transform.position;
                 float distance = vec.magnitude;
-                if (distance < _attackRangeStat.Value && distance < minDistance)
+                if (distance < _attackRangeStat.Value && distance < minDistance)    
                 {
                     if (!Physics.Raycast(_entity.transform.position,vec.normalized,distance,LayerMask.NameToLayer("Map")))
                     {
@@ -57,9 +57,6 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem
             
             return target != null;
         }
-        
-        
-        
         
     }
 }
