@@ -67,16 +67,9 @@ namespace _1.Script.EntityScript.Entities.Modules.HealthSystem
             {
                 IsDead = true;
                 OnDead?.Invoke();
-                
+                Destroy(_entity.gameObject);
             }
         }
-
-        [ContextMenu("Damage 10")]
-        private void Damage10()
-        {
-            Hp -= 10;
-        }
-        
         
     }
 }

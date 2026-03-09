@@ -1,6 +1,4 @@
-using System;
 using _1.Script.EntityScript.Entities.Modules.HealthSystem;
-using GameLib.ObjectPool.Runtime;
 using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skills.NormalAttackSkillScript
@@ -47,6 +45,10 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skill
             {
                 Vector3 direction = (_target.position - _self.position).normalized;
                 _self.position += direction * (_speed * Time.fixedDeltaTime);
+            }
+            else
+            {
+                Destroy(gameObject);
             }
         }
 
