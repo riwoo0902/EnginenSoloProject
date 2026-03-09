@@ -45,6 +45,7 @@ namespace _1.Script.EntityScript.Entities.FSM.States
                 moveModule.MoveStop(true);
                 if (skill.CanUseSkill())
                 {
+                    skill.SetTarget(target.transform);
                     skill.UseSkill();
                 }
             }

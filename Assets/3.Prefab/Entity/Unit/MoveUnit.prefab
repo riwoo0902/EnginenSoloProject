@@ -176,10 +176,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveUnit
       objectReference: {fileID: 0}
-    - target: {fileID: 8053405764225135796, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 06bf9c471d6ecc4418fee4741a135b84, type: 2}
     m_RemovedComponents:
     - {fileID: 5076926732214632264, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
     m_RemovedGameObjects: []
@@ -216,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityChannel: {fileID: 11400000, guid: 7208b52188c81b540966ddc6d7592cff, type: 2}
+  myTeam: 0
   stateListSo: {fileID: 11400000, guid: ba2e2ae321b06534a96fe1785322bc44, type: 2}
 --- !u!195 &2484489718961265142
 NavMeshAgent:

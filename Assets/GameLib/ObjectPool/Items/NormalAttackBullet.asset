@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f61c1a0d4e44ac1be7cdd2389d5879d, type: 3}
-  m_Name: AnimatorEffect
+  m_Name: NormalAttackBullet
   m_EditorClassIdentifier: 
-  poolingName: AnimatorEffect
-  prefab: {fileID: 8688826987494863303, guid: 7b1b50fb0467921469fdf618a7cea83c, type: 3}
-  initCount: 5
+  poolingName: NormalAttackBullet
+  prefab: {fileID: 0}
+  initCount: 0

@@ -12,10 +12,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unit
       objectReference: {fileID: 0}
-    - target: {fileID: 2837409528095569870, guid: 1d9358fa65d84834b847278c908eb790, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: b235178bda206dc4c817eb88d453f665, type: 2}
     - target: {fileID: 3581693565572839049, guid: 1d9358fa65d84834b847278c908eb790, type: 3}
       propertyPath: statOverrides.Array.size
       value: 6
@@ -147,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityChannel: {fileID: 11400000, guid: 7208b52188c81b540966ddc6d7592cff, type: 2}
-  stateListSo: {fileID: 11400000, guid: ba2e2ae321b06534a96fe1785322bc44, type: 2}
+  myTeam: 0
 --- !u!1001 &9138446135462735433
 PrefabInstance:
   m_ObjectHideFlags: 0
