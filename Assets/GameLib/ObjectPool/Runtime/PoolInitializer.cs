@@ -6,6 +6,7 @@ namespace GameLib.ObjectPool.Runtime
     public class PoolInitializer : MonoBehaviour
     {
         [field: SerializeField] public PoolManagerSO PoolManager { get;  private set; }
+        public static PoolInitializer Instance { get; private set; }
 
         private void Awake()
         {
@@ -13,8 +14,15 @@ namespace GameLib.ObjectPool.Runtime
             
             PoolInitializer[] initializers = FindObjectsByType<PoolInitializer>(FindObjectsSortMode.None);
             Debug.Assert(initializers.Length == 1, "오직 하나의 풀 이니셜라이저만 씬에 존재할 수 있습니다.");
+
+            Instance = this;
         }
-        
+
+        private void OnDestroy()
+        {
+            if (Instance == this) Instance = null;
+        }
+
         public T Pop<T>(PoolItemSO type) where T : IPoolable => PoolManager.Pop<T>(type);
         public void Push(IPoolable item) => PoolManager.Push(item);
     }

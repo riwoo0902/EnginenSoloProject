@@ -1,5 +1,6 @@
 using _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skills.NormalAttackSkillScript;
 using _1.Script.EntityScript.Entities.Modules.StatSystem;
+using GameLib.ObjectPool.Runtime;
 using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skills
@@ -11,6 +12,7 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skill
         private float _lastAttackTime = 0;
         private Transform _target;
         [SerializeField] private GameObject prefab;
+        [SerializeField] private PoolItemSO poolItemSo;
         public override void Initialize(Entity owner)
         {
             base.Initialize(owner);
@@ -34,12 +36,10 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skill
         {
             _lastAttackTime = Time.time;
 
-            GameObject bullet = Instantiate(prefab);
+            TargetBullet bullet = PoolInitializer.Instance.Pop<TargetBullet>(poolItemSo);
             bullet.transform.position = entity.transform.position;
-            if (bullet.TryGetComponent(out TargetBullet targetBullet))
-            {
-                targetBullet.SetData(entity.myTeam,_target,_damageStat.Value,10);
-            }
+            bullet.SetData(entity.myTeam,_target,_damageStat.Value,10);
+            
             
         }
 

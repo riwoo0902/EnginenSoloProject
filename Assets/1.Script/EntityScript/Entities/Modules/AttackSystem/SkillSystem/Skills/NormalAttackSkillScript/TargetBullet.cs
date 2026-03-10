@@ -1,11 +1,13 @@
 using _1.Script.EntityScript.Entities.Modules.HealthSystem;
+using GameLib.ObjectPool.Runtime;
 using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skills.NormalAttackSkillScript
 {
     [RequireComponent(typeof(Collider),typeof(MeshRenderer))]
-    public class TargetBullet : MonoBehaviour
+    public class TargetBullet : MonoBehaviour,IPoolable
     {
+        [SerializeField] private PoolManagerSO poolManagerSo;
         private static readonly int Color1 = Shader.PropertyToID("_Color");
         private Transform _self;
         private Transform _target;
@@ -13,6 +15,7 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skill
         private float _speed;
         private Material _material;
         private Team _myTeam;
+        private bool _isattacking = false;
         private void Awake()
         {
             _self = transform;
@@ -48,7 +51,7 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skill
             }
             else
             {
-                Destroy(gameObject);
+                PoolInitializer.Instance.Push(this);
             }
         }
 
@@ -61,11 +64,20 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skill
                     if (entity.TryGetModule(out HealthModule healthModule))
                     {
                         healthModule.Hp -= _damage;
-                        Destroy(gameObject);
+                        PoolInitializer.Instance.Push(this);
                     }
                 }
             }
         }
+
+        
+        [field:SerializeField] public PoolItemSO PoolItem { get; set; }
+        public GameObject GameObject => gameObject;
+        public void ResetItem()
+        {
+            _target = null;
+        }
+        
         
     }
 }
