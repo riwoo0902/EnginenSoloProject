@@ -14,7 +14,6 @@ namespace _1.Script.EntityScript.Entities
         {
             return team1 == team2;
         }
-        
     }
     
 }

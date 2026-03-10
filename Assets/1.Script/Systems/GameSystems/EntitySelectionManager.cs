@@ -20,6 +20,7 @@ namespace _1.Script.Systems.GameSystems
         
         private Camera _mainCamera;
         
+        
         protected override void Awake()
         {
             base.Awake();
@@ -117,6 +118,8 @@ namespace _1.Script.Systems.GameSystems
         
         private bool CheckSelection(Entity entity, MouseDragEndEvent evt)
         {
+            if (!TeamCheck.IsTeam(PlayerData.PlayerTeam, entity.myTeam)) return false;
+            
             Vector2 entityPos = _mainCamera.WorldToScreenPoint(entity.transform.position);
 
             if (evt.startPos.x - selectSize.x <= entityPos.x && entityPos.x <= evt.endPos.x + selectSize.x)
