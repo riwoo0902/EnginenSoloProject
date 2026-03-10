@@ -23,6 +23,7 @@ namespace _1.Script.Systems.GameSystems
         private void AddEntityList(EntitySpawnEvent evt)
         {
             entities.Add(evt.entity);
+            evt.entity.transform.SetParent(transform);
         }
 
         private void RemoveEntityList(EntityDestroyEvent evt)
