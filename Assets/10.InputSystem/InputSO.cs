@@ -83,5 +83,30 @@ namespace _10.InputSystem
             CameraMoveDir = context.ReadValue<Vector2>();
             OnChangedCameraMoveDir?.Invoke(CameraMoveDir);
         }
+
+        public event Action OnMovePressed;
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                OnMovePressed?.Invoke();
+        }
+        public event Action OnStopPressed;
+        public void OnStop(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                OnStopPressed?.Invoke();
+        }
+        public event Action OnAttackPressed;
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                OnAttackPressed?.Invoke();
+        }
+        public event Action OnCancelPressed;
+        public void OnCancel(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                OnCancelPressed?.Invoke();
+        }
     }
 }

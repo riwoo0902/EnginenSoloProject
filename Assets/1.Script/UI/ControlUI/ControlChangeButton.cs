@@ -10,7 +10,6 @@ namespace _1.Script.UI.ControlUI
     public class ControlChangeButton : MonoBehaviour
     {
         [SerializeField] private StateType changeState;
-        public InputSO inputSo;
         public event Action<StateType> OnChangeState;
 
 
