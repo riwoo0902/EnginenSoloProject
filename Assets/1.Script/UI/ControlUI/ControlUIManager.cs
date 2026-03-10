@@ -17,9 +17,12 @@ namespace _1.Script.UI.ControlUI
             _buttons = GetComponentsInChildren<ControlChangeButton>();
             foreach (ControlChangeButton controlChangeButton in _buttons)
             {
-                controlChangeButton.inputSo = inputSo;
                 controlChangeButton.OnChangeState += ChangeControlType;
             }
+
+            inputSo.OnMovePressed += MoveControlKeyPressed;
+            inputSo.OnStopPressed += StopControlKeyPressed;
+            inputSo.OnAttackPressed += AttackMoveControlKeyPressed;
         }
 
         private void OnDestroy()
@@ -28,13 +31,31 @@ namespace _1.Script.UI.ControlUI
             {
                 controlChangeButton.OnChangeState -= ChangeControlType;
             }
+            
+            inputSo.OnMovePressed -= MoveControlKeyPressed;
+            inputSo.OnStopPressed -= StopControlKeyPressed;
+            inputSo.OnAttackPressed -= AttackMoveControlKeyPressed;
         }
 
         private void ChangeControlType(StateType type)
         {
             uiChannel.RaiseEvent(UIEvents.ChangeEntityControl.Init(type));
         }
+
+        private void MoveControlKeyPressed()
+        {
+            ChangeControlType(StateType.Move);
+        }
         
+        private void StopControlKeyPressed()
+        {
+            ChangeControlType(StateType.Stop);
+        }
+        
+        private void AttackMoveControlKeyPressed()
+        {
+            ChangeControlType(StateType.AttackMove);
+        }
         
     }
 }
