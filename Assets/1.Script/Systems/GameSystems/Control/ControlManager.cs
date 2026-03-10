@@ -64,13 +64,13 @@ namespace _1.Script.Systems.GameSystems.Control
 
         public void ChangeControlType(ChangeEntityControlEvent evt)
         {
-            currentControl = evt.controlType;
-
-            if (currentControl == StateType.Stop)
+            if (evt.controlType == StateType.Stop)
             {
-                _controlListenerModules.ForEach(listenerModule => listenerModule.Control(Vector3.zero, currentControl));
+                _controlListenerModules.ForEach(listenerModule => listenerModule.Control(Vector3.zero, evt.controlType));
+                return;
             }
             
+            currentControl = evt.controlType;
         }
         
         private void InvokeMouseControl()

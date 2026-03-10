@@ -41,8 +41,6 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skill
                 targetBullet.SetData(entity.myTeam,_target,_damageStat.Value,10);
             }
             
-            
-            Debug.Log("NormalAttack");
         }
 
         public void SetTarget(Transform target)
