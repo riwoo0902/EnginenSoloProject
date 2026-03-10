@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 8139376058085732856, guid: ca72d88682c4c23439c91b587c464c1f, type: 3}
+  poolItemSo: {fileID: 11400000, guid: 97b7718f2f4fb084e9443e6f64a27d0b, type: 2}

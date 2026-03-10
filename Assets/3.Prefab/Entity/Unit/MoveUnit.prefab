@@ -176,6 +176,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveUnit
       objectReference: {fileID: 0}
+    - target: {fileID: 8725524592963909107, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
+      propertyPath: statOverrides.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725524592963909107, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
+      propertyPath: statOverrides.Array.data[1].stat
+      value: 
+      objectReference: {fileID: 11400000, guid: 04ef33659329b6447942528284c85317, type: 2}
+    - target: {fileID: 8725524592963909107, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
+      propertyPath: statOverrides.Array.data[2].stat
+      value: 
+      objectReference: {fileID: 11400000, guid: a8fcd7aa6bfd2d14fb42558aad947b4c, type: 2}
+    - target: {fileID: 8725524592963909107, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
+      propertyPath: statOverrides.Array.data[3].stat
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e579a799f7584c4fa856b8d618e032e, type: 2}
+    - target: {fileID: 8725524592963909107, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
+      propertyPath: statOverrides.Array.data[4].stat
+      value: 
+      objectReference: {fileID: 11400000, guid: 955ab275a9f35f5448a06673299672d9, type: 2}
+    - target: {fileID: 8725524592963909107, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
+      propertyPath: statOverrides.Array.data[5].stat
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c88973072443f849b259f2944dba0c0, type: 2}
+    - target: {fileID: 8725524592963909107, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
+      propertyPath: statOverrides.Array.data[1].startValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725524592963909107, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
+      propertyPath: statOverrides.Array.data[2].startValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725524592963909107, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
+      propertyPath: statOverrides.Array.data[3].startValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725524592963909107, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
+      propertyPath: statOverrides.Array.data[4].startValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725524592963909107, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
+      propertyPath: statOverrides.Array.data[5].startValue
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5076926732214632264, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
     m_RemovedGameObjects: []

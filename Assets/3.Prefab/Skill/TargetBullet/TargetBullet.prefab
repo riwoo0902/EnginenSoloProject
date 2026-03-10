@@ -121,3 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a183ec842b4d4209b9610f693ebe9ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolManagerSo: {fileID: 0}
+  <PoolItem>k__BackingField: {fileID: 11400000, guid: 97b7718f2f4fb084e9443e6f64a27d0b, type: 2}

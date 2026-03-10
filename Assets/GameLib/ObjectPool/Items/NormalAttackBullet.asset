@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: NormalAttackBullet
   m_EditorClassIdentifier: 
   poolingName: NormalAttackBullet
-  prefab: {fileID: 0}
+  prefab: {fileID: 8139376058085732856, guid: ca72d88682c4c23439c91b587c464c1f, type: 3}
   initCount: 0
