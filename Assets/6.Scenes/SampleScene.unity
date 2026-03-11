@@ -4289,11 +4289,11 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 50
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2048
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 64f54276ca81c8d499b399b677395fd7, type: 2}
   m_TargetDisplay: 0
@@ -5388,7 +5388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityChannel: {fileID: 11400000, guid: 7208b52188c81b540966ddc6d7592cff, type: 2}
-  myTeam: 1
+  myTeam: 0
   _unitPrefab: {fileID: 6085479703203348987, guid: fe5bb85a38ed33044943b65b061d3e07, type: 3}
   <Delay>k__BackingField: 3
 --- !u!114 &1312138243

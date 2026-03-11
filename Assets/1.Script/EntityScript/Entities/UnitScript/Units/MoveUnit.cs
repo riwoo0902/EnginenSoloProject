@@ -19,7 +19,7 @@ namespace _1.Script.EntityScript.Entities.UnitScript.Units
         protected override void Start()
         {
             base.Start();
-            StateMachine.ChangeState(Vector2.zero, StateType.Stop);
+            StateMachine.ChangeState(transform.position, StateType.AttackMove);
         }
         protected virtual void Update()
         {
