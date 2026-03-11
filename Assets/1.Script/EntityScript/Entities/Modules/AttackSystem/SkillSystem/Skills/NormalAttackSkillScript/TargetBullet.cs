@@ -23,11 +23,6 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skill
             _material = new Material(meshRenderer.material);
             meshRenderer.material = _material;
         }
-        private void Start()
-        {
-            if(_myTeam == Team.Blue) SetColor(Color.blue);
-            else if(_myTeam == Team.Red) SetColor(Color.red);
-        }
 
         private void SetColor(Color color)
         {
@@ -37,6 +32,8 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skill
         public void SetData(Team team,Transform  target, float damage,float speed)
         {
             _myTeam = team;
+            if(_myTeam == Team.Blue) SetColor(Color.blue);
+            else if(_myTeam == Team.Red) SetColor(Color.red);
             _target = target;
             _damage = damage;
             _speed = speed;
