@@ -25,7 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
   m_Name: EntitySpawner Blackboard
   m_EditorClassIdentifier: 
-  VersionTimestamp: 639087849990953625
+  VersionTimestamp: 639088154133373734
   AssetID:
     m_Value0: 322555349125923703
     m_Value1: 7440499487013641001
@@ -72,7 +72,7 @@ MonoBehaviour:
   - rid: 8169558549473788023
   - rid: 8169558549473788147
   - rid: 8169558549473788165
-  m_VersionTimestamp: 639087850003091604
+  m_VersionTimestamp: 639088154146144725
   m_SerializedVersion: 1
   m_DebugInfo: {fileID: -6960211092523522775}
   m_RuntimeGraph: {fileID: 2738505190063528248}
@@ -105,31 +105,31 @@ MonoBehaviour:
     NamedChildren: []
     IsPlaceholder: 0
   - Name: CheckSpawn
-    Story: 'Can Spawn to [BuildUnit]'
+    Story: 'Can Spawn to [buildUnit]'
     RuntimeTypeString: _1.Script.BT.Action.CheckSpawnAction, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     RuntimeTypeID:
       m_Value0: 12457212621619499676
       m_Value1: 2476917704798949918
     Variables:
-    - Name: BuildUnit
+    - Name: buildUnit
       Type:
-        m_SerializableType: _1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnit,
+        m_SerializableType: _1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnits.SpawnBuildingUnit,
           Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       Tooltip: 
     NamedChildren: []
     IsPlaceholder: 0
   - Name: TrySpawn
-    Story: 'Try Spawn to [BuildingUnit]'
+    Story: 'Try Spawn to [spawnBuildingUnit]'
     RuntimeTypeString: _1.Script.BT.Action.TrySpawnAction, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     RuntimeTypeID:
       m_Value0: 13890549298520262839
       m_Value1: 2967216873904559280
     Variables:
-    - Name: BuildingUnit
+    - Name: spawnBuildingUnit
       Type:
-        m_SerializableType: _1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnit,
+        m_SerializableType: _1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnits.SpawnBuildingUnit,
           Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       Tooltip: 
     NamedChildren: []
@@ -235,7 +235,7 @@ MonoBehaviour:
           m_Value0: 12457212621619499676
           m_Value1: 2476917704798949918
         m_FieldValues:
-        - rid: 8169558549473788287
+        - rid: 8169558560213565514
     - rid: 8169558549473788148
       type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
       data:
@@ -274,7 +274,7 @@ MonoBehaviour:
           m_Value0: 13890549298520262839
           m_Value1: 2967216873904559280
         m_FieldValues:
-        - rid: 8169558549473788241
+        - rid: 8169558560213565515
     - rid: 8169558549473788166
       type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
       data:
@@ -294,55 +294,45 @@ MonoBehaviour:
         m_NodeModel:
           rid: 8169558549473788165
         m_Connections: []
-    - rid: 8169558549473788241
+    - rid: 8169558560213565514
       type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
       data:
-        FieldName: BuildingUnit
+        FieldName: buildUnit
         Type:
-          m_SerializableType: _1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnit,
+          m_SerializableType: _1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnits.SpawnBuildingUnit,
             Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         LocalValue:
-          rid: 8169558549473788242
+          rid: 8169558560213565516
         LinkedVariable:
-          rid: 8169558549473788243
-    - rid: 8169558549473788242
-      type: {class: 'BlackboardVariable`1[[_1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnit, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+          rid: 8169558560213565550
+    - rid: 8169558560213565515
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: spawnBuildingUnit
+        Type:
+          m_SerializableType: _1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnits.SpawnBuildingUnit,
+            Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 8169558560213565517
+        LinkedVariable:
+          rid: 8169558560213565550
+    - rid: 8169558560213565516
+      type: {class: 'BlackboardVariable`1[[_1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnits.SpawnBuildingUnit, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
           m_Value0: 0
           m_Value1: 0
         Name: 
         m_Value: {fileID: 0}
-    - rid: 8169558549473788243
-      type: {class: 'TypedVariableModel`1[[_1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnit, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        ID:
-          m_Value0: 2397814281558068972
-          m_Value1: 1647077298029451885
-        Name: Building Unit
-        IsExposed: 1
-        m_IsShared: 0
-        m_Value: {fileID: 0}
-    - rid: 8169558549473788287
-      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
-      data:
-        FieldName: BuildUnit
-        Type:
-          m_SerializableType: _1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnit,
-            Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        LocalValue:
-          rid: 8169558549473788288
-        LinkedVariable:
-          rid: 8169558549473788297
-    - rid: 8169558549473788288
-      type: {class: 'BlackboardVariable`1[[_1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnit, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+    - rid: 8169558560213565517
+      type: {class: 'BlackboardVariable`1[[_1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnits.SpawnBuildingUnit, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
           m_Value0: 0
           m_Value1: 0
         Name: 
         m_Value: {fileID: 0}
-    - rid: 8169558549473788297
+    - rid: 8169558560213565550
       type: {class: 'TypedVariableModel`1[[_1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnit, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
       data:
         ID:
@@ -370,7 +360,7 @@ MonoBehaviour:
   m_Variables:
   - rid: 8169558545572298893
   - rid: 8169558549473788189
-  m_VersionTimestamp: 639087849990953625
+  m_VersionTimestamp: 639088154133373734
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: -3264795019654224276}
@@ -429,14 +419,14 @@ MonoBehaviour:
           rid: 8169558545572298895
         BlackboardGroupReferences: []
         Root:
-          rid: 8169558549473788298
+          rid: 8169558560213565559
         m_ActiveNodes: []
         m_NodesToTick: []
         m_NodesToEnd:
           rid: 8169558545572298897
         m_EndedNodes:
           rid: 8169558545572298898
-        m_VersionTimestamp: 639087850003091604
+        m_VersionTimestamp: 639088154146144725
     - rid: 8169558545572298895
       type: {class: BlackboardReference, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -453,9 +443,9 @@ MonoBehaviour:
       type: {class: Blackboard, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         m_Variables:
-        - rid: 8169558549473788300
-        - rid: 8169558549473788301
-    - rid: 8169558549473788298
+        - rid: 8169558560213565561
+        - rid: 8169558560213565562
+    - rid: 8169558560213565559
       type: {class: Start, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
@@ -466,10 +456,10 @@ MonoBehaviour:
         m_Parent:
           rid: -2
         m_Child:
-          rid: 8169558549473788299
+          rid: 8169558560213565560
         Repeat: 1
         AllowMultipleRepeatsPerTick: 0
-    - rid: 8169558549473788299
+    - rid: 8169558560213565560
       type: {class: RepeaterModifier, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
@@ -478,11 +468,11 @@ MonoBehaviour:
         Graph:
           rid: 8169558545572298894
         m_Parent:
-          rid: 8169558549473788298
+          rid: 8169558560213565559
         m_Child:
-          rid: 8169558549473788302
+          rid: 8169558560213565563
         m_AllowMultipleRepeatsPerTick: 0
-    - rid: 8169558549473788300
+    - rid: 8169558560213565561
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -490,7 +480,7 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 0}
-    - rid: 8169558549473788301
+    - rid: 8169558560213565562
       type: {class: 'BlackboardVariable`1[[_1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnit, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -498,7 +488,7 @@ MonoBehaviour:
           m_Value1: 1647077298029451885
         Name: Building Unit
         m_Value: {fileID: 0}
-    - rid: 8169558549473788302
+    - rid: 8169558560213565563
       type: {class: SequenceComposite, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
@@ -507,11 +497,11 @@ MonoBehaviour:
         Graph:
           rid: 8169558545572298894
         m_Parent:
-          rid: 8169558549473788299
+          rid: 8169558560213565560
         m_Children:
-        - rid: 8169558549473788303
-        - rid: 8169558549473788304
-    - rid: 8169558549473788303
+        - rid: 8169558560213565564
+        - rid: 8169558560213565565
+    - rid: 8169558560213565564
       type: {class: CheckSpawnAction, ns: _1.Script.BT.Action, asm: Assembly-CSharp}
       data:
         ID:
@@ -520,10 +510,10 @@ MonoBehaviour:
         Graph:
           rid: 8169558545572298894
         m_Parent:
-          rid: 8169558549473788302
-        BuildUnit:
-          rid: 8169558549473788301
-    - rid: 8169558549473788304
+          rid: 8169558560213565563
+        buildUnit:
+          rid: 8169558560213565566
+    - rid: 8169558560213565565
       type: {class: TrySpawnAction, ns: _1.Script.BT.Action, asm: Assembly-CSharp}
       data:
         ID:
@@ -532,6 +522,26 @@ MonoBehaviour:
         Graph:
           rid: 8169558545572298894
         m_Parent:
-          rid: 8169558549473788302
-        BuildingUnit:
-          rid: 8169558549473788301
+          rid: 8169558560213565563
+        spawnBuildingUnit:
+          rid: 8169558560213565567
+    - rid: 8169558560213565566
+      type: {class: 'ComponentToComponentBlackboardVariable`2[[_1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnit, Assembly-CSharp],[_1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnits.SpawnBuildingUnit, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+        m_LinkedVariable:
+          rid: 8169558560213565562
+    - rid: 8169558560213565567
+      type: {class: 'ComponentToComponentBlackboardVariable`2[[_1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnit, Assembly-CSharp],[_1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnits.SpawnBuildingUnit, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+        m_LinkedVariable:
+          rid: 8169558560213565562
