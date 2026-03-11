@@ -53,6 +53,10 @@ PrefabInstance:
       value: Building Unit Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7007216298220289653, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
+      propertyPath: m_Height
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007216298220289653, guid: a3132849b5b9fed47a763d37bbadf5d5, type: 3}
       propertyPath: m_Radius
       value: 1.5
       objectReference: {fileID: 0}

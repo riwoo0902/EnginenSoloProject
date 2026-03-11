@@ -15,7 +15,7 @@ namespace _1.Script.EntityScript.Entities
         public event Action<bool> Selection;
 
         public Team myTeam;
-
+        
         protected virtual void Start()
         {
             entityChannel.RaiseEvent(EntityEvents.EntitySpawn.Init(this));
@@ -30,6 +30,11 @@ namespace _1.Script.EntityScript.Entities
         {
             IsSelection = select;
             Selection?.Invoke(select);
+        }
+
+        public void SetTeam(Team setTeam)
+        {
+            myTeam = setTeam;
         }
         
     }

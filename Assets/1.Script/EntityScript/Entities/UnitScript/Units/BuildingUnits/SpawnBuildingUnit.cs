@@ -1,3 +1,4 @@
+using _1.Script.Systems;
 using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnits
@@ -11,7 +12,13 @@ namespace _1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnits
         public void SpawnUnit()
         {
             GameObject unit = Instantiate(_unitPrefab);
-            
+            unit.transform.position = transform.position + Random.insideUnitCircle.normalized.ChangeToVector3() * 3f;
+            if (unit.TryGetComponent(out Entity entity))
+            {
+                entity.SetTeam(myTeam);
+            }
         }
+        
+        
     }
 }
