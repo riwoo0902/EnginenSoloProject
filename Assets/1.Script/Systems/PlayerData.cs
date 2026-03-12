@@ -7,7 +7,7 @@ namespace _1.Script.Systems
     {
         public static Team PlayerTeam { get; private set; } = Team.Blue;
         
-        public static float Gold = 0;
+        public static float Gold = 100;
 
         public static bool TryBuy(float cost)
         {
