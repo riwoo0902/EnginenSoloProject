@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace _1.Script.Systems.GameSystems.SaveSystem
 {
+    [DefaultExecutionOrder(-20)]
     public class DataManager : MonoBehaviour
     {
         [Serializable]
