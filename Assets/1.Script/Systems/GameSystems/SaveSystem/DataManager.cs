@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace _1.Script.Systems.GameSystems.SaveSystem
 {
+    [DefaultExecutionOrder(-20)]
     public class DataManager : MonoBehaviour
     {
         [Serializable]
@@ -32,10 +33,12 @@ namespace _1.Script.Systems.GameSystems.SaveSystem
         {
             SystemChannel.AddListener<SavePrefEvent>(HandleSavePrefEvent);
             SystemChannel.AddListener<LoadPrefEvent>(HandleLoadPrefEvent);
+            HandleLoadPrefEvent(SystemEvents.LoadPref);
         }
 
         private void OnDestroy()
         {
+            HandleSavePrefEvent(SystemEvents.SavePref);
             SystemChannel.RemoveListener<SavePrefEvent>(HandleSavePrefEvent);
             SystemChannel.RemoveListener<LoadPrefEvent>(HandleLoadPrefEvent);
         }
@@ -46,7 +49,7 @@ namespace _1.Script.Systems.GameSystems.SaveSystem
         {
             string saveData = GetSceneSaveData();
             PlayerPrefs.SetString(prefKey, saveData);
-            Debug.Log($"Save Data : {saveData}");
+            //Debug.Log($"Save Data : {saveData}");
         }
 
         private string GetSceneSaveData()

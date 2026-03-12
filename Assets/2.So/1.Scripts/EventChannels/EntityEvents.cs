@@ -8,6 +8,9 @@ namespace _2.So._1.Scripts.EventChannels
     {
         public static readonly EntitySpawnEvent EntitySpawn = new EntitySpawnEvent();
         public static readonly EntityDestroyEvent EntityDestroy = new EntityDestroyEvent();
+        public static readonly ScoreAddEvent ScoreAdd = new ScoreAddEvent();
+        
+        
     }
 
     public class EntitySpawnEvent : GameEvent
@@ -30,6 +33,15 @@ namespace _2.So._1.Scripts.EventChannels
             return this;
         }
     }
-
+    public class ScoreAddEvent : GameEvent
+    {
+        public int addScore;
+        
+        public ScoreAddEvent Init(int data)
+        {
+            addScore = data;
+            return this;
+        }
+    }
     
 }
