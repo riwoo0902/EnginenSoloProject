@@ -15,7 +15,7 @@ namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem.Skill
         private float _speed;
         private Material _material;
         private Team _myTeam;
-        private bool _isattacking = false;
+        
         private void Awake()
         {
             _self = transform;
