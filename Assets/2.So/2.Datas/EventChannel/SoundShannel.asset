@@ -9,13 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7118bd4d0c4d4119bc4f43d1570433c0, type: 3}
-  m_Name: Sound clip data
+  m_Script: {fileID: 11500000, guid: c115e9f9d0924e06a4fa89f06df8b4ae, type: 3}
+  m_Name: SoundShannel
   m_EditorClassIdentifier: 
-  audioType: 0
-  clip: {fileID: 8300000, guid: 6b18abe4ddc0f3846842005767d5c864, type: 3}
-  loop: 0
-  randomizePitch: 0
-  randomPitchModifier: 0.1
-  volume: 2
-  pitch: 0.1
