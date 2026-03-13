@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1722234191956178539}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2148967, y: 1.5, z: -13.353836}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityChannel: {fileID: 11400000, guid: 7208b52188c81b540966ddc6d7592cff, type: 2}
+  myTeam: 0
 --- !u!143 &2998644366273576207
 CharacterController:
   m_ObjectHideFlags: 0

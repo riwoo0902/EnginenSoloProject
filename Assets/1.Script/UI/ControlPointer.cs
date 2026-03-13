@@ -10,15 +10,17 @@ namespace _1.Script.UI
     public class ControlPointer : MonoBehaviour
     {
         [SerializeField] private EventChannel uiChannel;
+        [SerializeField] private EventChannel soundChannel;
+        [SerializeField] private SoundClipSO clipSo;
         [SerializeField] private new ParticleSystem particleSystem;
         [SerializeField] private ControlPointerRenderer controlPointerRenderer;
-        
+        private Transform _cameraTransform;
         private const float YPos = 1;
         private void Awake()
         {
             uiChannel.AddListener<SetPointerEvent>(SetPointer);
             uiChannel.AddListener<EntitySelectionEvent>(HidePointer);
-            
+            _cameraTransform = Camera.main.transform;
             gameObject.SetActive(false);
         }
 
@@ -35,6 +37,7 @@ namespace _1.Script.UI
         
         private void SetPointer(SetPointerEvent evt)
         {
+            soundChannel.RaiseEvent(SoundEvents.PlaySoundEvent.Init(_cameraTransform.position,clipSo));
             gameObject.SetActive(true);
             particleSystem.Play();
             Vector3 vec = evt.pointerPos.ChangeToVector3();

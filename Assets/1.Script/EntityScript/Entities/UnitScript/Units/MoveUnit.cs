@@ -1,5 +1,6 @@
 using _1.Script.EntityScript.Entities.FSM;
 using _1.Script.EntityScript.Entities.Modules.MoveSystem;
+using _1.Script.EntityScript.Entities.UnitScript.Units.MoveUnits;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,11 +10,12 @@ namespace _1.Script.EntityScript.Entities.UnitScript.Units
     {
         [SerializeField] private StateListSO stateListSo;
         public StateMachine StateMachine { get; private set; }
-        
+        private IMoveModule _moveModule;
         protected override void Awake()
         {
             base.Awake();
             StateMachine = new StateMachine(this,stateListSo.states);
+            _moveModule = GetModule<IMoveModule>();
         }
 
         protected override void Start()
@@ -29,6 +31,7 @@ namespace _1.Script.EntityScript.Entities.UnitScript.Units
         protected virtual void FixedUpdate()
         {
             StateMachine.FixedUpdateMachine();
+            
         }
     }
 }
