@@ -14,6 +14,7 @@ namespace _1.Script.EntityScript.Entities.FSM.States
         
         public override void Enter(Vector3 point)
         {
+            moveModule.MoveStop(false);
             _moveModule.MoveToTarget(point);
         }
         

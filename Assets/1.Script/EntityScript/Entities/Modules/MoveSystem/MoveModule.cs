@@ -42,17 +42,20 @@ namespace _1.Script.EntityScript.Entities.Modules.MoveSystem
         }
         private void SetSpeed(float speed)
         {
-            _navMeshAgent.speed = speed;
+            if(_navMeshAgent != null)
+                _navMeshAgent.speed = speed;
         }
 
         public void MoveToTarget(Vector3 target)
         {
-            _navMeshAgent.SetDestination(target);
+            if(_navMeshAgent != null)
+                _navMeshAgent.SetDestination(target);
         }
 
         public void MoveStop(bool stop)
         {
-            _navMeshAgent.isStopped = stop;
+            if(_navMeshAgent != null)
+                _navMeshAgent.isStopped = stop;
         }
         
         

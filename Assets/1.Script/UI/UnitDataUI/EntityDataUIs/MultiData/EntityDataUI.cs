@@ -25,6 +25,14 @@ namespace _1.Script.UI.UnitDataUI.EntityDataUIs.MultiData
             
         }
 
+        private void Update()
+        {
+            if (!Entity)
+            {
+                Off();
+            }
+        }
+
         private void OnDisable()
         {
             if(_healthModule != null)_healthModule.OnHealthChange -= HealthModuleOnOnHealthChange;

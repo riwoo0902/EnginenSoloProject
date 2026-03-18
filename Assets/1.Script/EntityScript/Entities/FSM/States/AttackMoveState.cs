@@ -27,6 +27,7 @@ namespace _1.Script.EntityScript.Entities.FSM.States
             if (!_canAttackMove)
             {
                 moveUnit.StateMachine.ChangeState(point,StateType.Move);
+                return;
             }
             
             
