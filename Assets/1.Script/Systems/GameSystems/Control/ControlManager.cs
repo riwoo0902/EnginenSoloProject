@@ -66,7 +66,11 @@ namespace _1.Script.Systems.GameSystems.Control
         {
             if (evt.controlType == StateType.Stop)
             {
-                _controlListenerModules.ForEach(listenerModule => listenerModule.Control(Vector3.zero, evt.controlType));
+                foreach(IControlListenerModule listenerModule in _controlListenerModules)
+                {
+                    if(listenerModule == null) continue;
+                    listenerModule.Control(Vector3.zero, evt.controlType);
+                }
                 return;
             }
             

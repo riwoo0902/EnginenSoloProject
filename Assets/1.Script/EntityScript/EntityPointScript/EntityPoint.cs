@@ -1,5 +1,6 @@
 using System;
 using _1.Script.EntityScript.Entities;
+using _1.Script.EntityScript.Entities.Modules.VisualSystem;
 using UnityEngine;
 
 namespace _1.Script.EntityScript.EntityPointScript
@@ -32,7 +33,8 @@ namespace _1.Script.EntityScript.EntityPointScript
         public void SetTarget(Entity target)
         {
             entityTarget = target;
-            Vector3 size = target.transform.lossyScale;
+            VisualModule visualModule = entityTarget.GetModule<VisualModule>();
+            Vector3 size = visualModule.transform.lossyScale;
             size.y = 0.05f;
             transform.localScale = size * PlusSize;
 

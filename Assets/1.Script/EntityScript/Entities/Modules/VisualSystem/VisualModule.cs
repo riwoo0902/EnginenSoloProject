@@ -1,3 +1,4 @@
+using _1.Script.EntityScript.Entities.UnitScript.Units.MoveUnits;
 using _1.Script.EntityScript.ModuleSystem;
 using _2.So._1.Scripts.AnimParam;
 using UnityEngine;
@@ -27,7 +28,8 @@ namespace _1.Script.EntityScript.Entities.Modules.VisualSystem
 
         private void Start()
         {
-            if(_entity.myTeam == Team.Blue) SetColor(Color.blue);
+            if(_entity is Player) SetColor(Color.yellow);
+            else if(_entity.myTeam == Team.Blue) SetColor(Color.blue);
             else if(_entity.myTeam == Team.Red) SetColor(Color.red);
         }
 

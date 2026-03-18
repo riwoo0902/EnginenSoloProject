@@ -12,7 +12,7 @@ namespace _1.Script.Systems.GameSystems
         [SerializeField] private InputSO inputs;
         [SerializeField] private EventChannel uiChannel;
 
-        [SerializeField] private Vector2 selectSize = new Vector2(50,50);
+        [SerializeField] private Vector2 selectSize = new Vector2(25,25);
         
         [SerializeField] private List<Entity> selectedEntities = new(90);
 
