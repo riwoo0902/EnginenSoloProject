@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _1.Script.EntityScript.Entities;
+using _1.Script.EntityScript.Entities.UnitScript.Units.MoveUnits;
 using _10.InputSystem;
 using _2.So._1.Scripts;
 using _2.So._1.Scripts.EventChannels;
@@ -118,7 +119,7 @@ namespace _1.Script.Systems.GameSystems
         
         private bool CheckSelection(Entity entity, MouseDragEndEvent evt)
         {
-            if (!TeamCheck.IsTeam(PlayerData.PlayerTeam, entity.myTeam)) return false;
+            if (!TeamCheck.IsTeam(Player.PlayerTeam, entity.myTeam)) return false;
             
             Vector2 entityPos = _mainCamera.WorldToScreenPoint(entity.transform.position);
 
