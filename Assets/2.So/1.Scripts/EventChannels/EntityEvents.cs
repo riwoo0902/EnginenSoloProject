@@ -9,7 +9,7 @@ namespace _2.So._1.Scripts.EventChannels
         public static readonly EntitySpawnEvent EntitySpawn = new EntitySpawnEvent();
         public static readonly EntityDestroyEvent EntityDestroy = new EntityDestroyEvent();
         public static readonly ScoreAddEvent ScoreAdd = new ScoreAddEvent();
-        
+        public static readonly PlayerMoveEvent PlayerMove = new PlayerMoveEvent();
         
     }
 
@@ -40,6 +40,17 @@ namespace _2.So._1.Scripts.EventChannels
         public ScoreAddEvent Init(int data)
         {
             addScore = data;
+            return this;
+        }
+    }
+
+    public class PlayerMoveEvent : GameEvent
+    {
+        public Vector3 playerPos;
+        
+        public PlayerMoveEvent Init(Vector3 pos)
+        {
+            playerPos = pos;
             return this;
         }
     }

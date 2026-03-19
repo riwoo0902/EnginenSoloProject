@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace _1.Script.Test
 {
@@ -21,15 +23,19 @@ namespace _1.Script.Test
         //랜덤 생성을위한 시드
         private float seed;
 
-        private async void Start()
+        [ContextMenu("MapBake")]
+        private async void MapBake()
         {
-
+            Stopwatch  stopwatch = new Stopwatch();
+            stopwatch.Start();
+            
             seed = Random.Range(0, 10000f);
-
+            
             var noiseArr = await Task.Run(GenerateNoise);
 
             SetTerrain(noiseArr);
-
+            stopwatch.Stop();
+            Debug.Log($"MapBake: {stopwatch.ElapsedMilliseconds}ms");
         }
 
         //실질적으로 지형을 설정하는 함수
@@ -47,6 +53,7 @@ namespace _1.Script.Test
         //노이즈 생성 함수
         private float[,] GenerateNoise()
         {
+            
 
             float[,] noiseArr = new float[mapSize, mapSize];
 

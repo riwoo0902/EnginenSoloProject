@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _1.Script.EntityScript.Entities;
+using _1.Script.EntityScript.Entities.FSM;
 using _1.Script.EntityScript.Entities.Modules.ControlListenerSystem;
 using _2.So._1.Scripts;
 using _2.So._1.Scripts.EventChannels;
@@ -17,7 +18,16 @@ namespace _1.Script.Systems.GameSystems.Control
         {
             base.Awake();
             entityChannel.AddListener<EntitySpawnEvent>(AddEntityList);  
-            entityChannel.AddListener<EntityDestroyEvent>(RemoveEntityList);  
+            entityChannel.AddListener<EntityDestroyEvent>(RemoveEntityList);
+            entityChannel.AddListener<PlayerMoveEvent>(EnemyControl);
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            entityChannel.RemoveListener<EntitySpawnEvent>(AddEntityList);
+            entityChannel.RemoveListener<EntityDestroyEvent>(RemoveEntityList);
+            entityChannel.RemoveListener<PlayerMoveEvent>(EnemyControl);
         }
 
         private void AddEntityList(EntitySpawnEvent obj)
@@ -39,6 +49,14 @@ namespace _1.Script.Systems.GameSystems.Control
                 {
                     _enemys.Remove(controlListenerModule);
                 }
+            }
+        }
+        
+        private void EnemyControl(PlayerMoveEvent evt)
+        {
+            foreach (IControlListenerModule enemy in _enemys)
+            {
+                enemy.Control(evt.playerPos, StateType.AttackMove);
             }
         }
 
