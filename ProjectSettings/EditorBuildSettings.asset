@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/6.Scenes/GameScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/6.Scenes/EndScene_Lose.unity
+    guid: 9d7741e7e0a2f1844b16214a0e7cb168
+  - enabled: 1
+    path: Assets/6.Scenes/EndScene_Win.unity
+    guid: a85982a4b8c252444b73b48992fc3808
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 99f9c9493070a9d4c979a8fec7c5a8d3, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 4aafcbd9969a1bd45abac88c1af05116, type: 2}

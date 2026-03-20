@@ -1,4 +1,5 @@
 using _1.Script.Systems;
+using _2.So._1.Scripts.EventChannels;
 using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnits
@@ -20,7 +21,12 @@ namespace _1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnits
                 entity.SetTeam(myTeam);
             }
         }
-        
-        
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            if(myTeam == Team.Red)
+                entityChannel.RaiseEvent(EntityEvents.GameEnd.Init((int)myTeam));
+        }
     }
 }
