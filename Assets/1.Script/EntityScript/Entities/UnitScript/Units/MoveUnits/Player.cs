@@ -37,7 +37,7 @@ namespace _1.Script.EntityScript.Entities.UnitScript.Units.MoveUnits
 
         private void Dead()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            entityChannel.RaiseEvent(EntityEvents.GameEnd.Init((int)myTeam));
         }
     }
 }

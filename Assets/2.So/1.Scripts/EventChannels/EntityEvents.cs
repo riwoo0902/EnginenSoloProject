@@ -56,10 +56,10 @@ namespace _2.So._1.Scripts.EventChannels
     }
     public class GameEndEvent : GameEvent 
     {
-        public int valeu;
+        public int value;
         public GameEndEvent Init(int data)
         {
-            valeu = data;
+            value = data;
             return this;
         }
         
