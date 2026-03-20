@@ -6,7 +6,12 @@ using UnityEngine;
 
 namespace _1.Script.EntityScript.Entities.Modules.AttackSystem.SkillSystem
 {
-    public class SkillModule : MonoBehaviour,IModule
+    public interface ISkillModule
+    {
+        bool TryGetSkill<T>(out T skillInstance) where T : AbstractSkill;
+    }
+
+    public class SkillModule : MonoBehaviour,IModule, ISkillModule
     {
         private Entity _entity;
         
