@@ -25,7 +25,8 @@ namespace _1.Script.EntityScript.Entities.UnitScript.Units.BuildingUnits
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            entityChannel.RaiseEvent(EntityEvents.GameEnd.Init((int)myTeam));
+            if(myTeam == Team.Red)
+                entityChannel.RaiseEvent(EntityEvents.GameEnd.Init((int)myTeam));
         }
     }
 }

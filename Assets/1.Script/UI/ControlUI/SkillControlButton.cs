@@ -19,6 +19,7 @@ namespace _1.Script.UI.ControlUI
         private void Awake()
         {
             uiChannel.AddListener<EntitySelectionEvent>(CheckSkillModuleOwner);
+            gameObject.SetActive(false);
         }
 
         private void OnDestroy()
